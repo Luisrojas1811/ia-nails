@@ -10,6 +10,7 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakart
 export const metadata: Metadata = {
   title: { default: "IA NAILS — Atelier & Academia", template: "%s | IA NAILS" },
   description: "Cursos online de técnicas de uñas: Soft Gel, Semipermanente, Polygel y Nail Art. Atelier en Bernal.",
+  robots: { index: false, follow: false }, // TODO: quitar al lanzar
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
