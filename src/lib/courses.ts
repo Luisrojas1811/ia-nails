@@ -15,3 +15,4 @@ export const courses: Course[] = [
 
 export const formatPrice = (n: number) =>
   new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 }).format(n);
+export const getCourse = (slug: string) => courses.find((c) => c.slug === slug);

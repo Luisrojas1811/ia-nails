@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
   return (
@@ -14,9 +15,12 @@ export function Header() {
             <Link key={l.href} href={l.href} className="text-sm font-semibold tracking-wider text-ink-muted transition hover:text-violet">{l.label}</Link>
           ))}
         </nav>
-        <Link href="/#cursos" className="rounded-full bg-black px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-violet">
-          Ver cursos
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/#cursos" className="rounded-full bg-black px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-violet">
+            Ver cursos
+          </Link>
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );
