@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   title: { default: "IA NAILS — Atelier & Academia", template: "%s | IA NAILS" },
   description: "Cursos online de técnicas de uñas: Soft Gel, Semipermanente, Polygel y Nail Art. Atelier en Bernal.",
   robots: { index: false, follow: false }, // TODO: quitar al lanzar
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://ia-nails-lpwe.vercel.app"), // TODO: dominio real
+  openGraph: { siteName: "IA NAILS", locale: "es_AR", type: "website" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
