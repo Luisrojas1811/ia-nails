@@ -5,6 +5,9 @@ import { ArrowLeft, MessageCircle } from "lucide-react";
 import { courses, formatPrice, getCourse } from "@/lib/courses";
 import { whatsappLink } from "@/lib/site";
 import { Placeholder } from "@/components/Placeholder";
+import { BuyButton } from "@/components/BuyButton";
+
+const checkoutEnabled = process.env.NEXT_PUBLIC_CHECKOUT_ENABLED === "true";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -40,10 +43,16 @@ export default async function CoursePage({ params }: Props) {
               <Placeholder label="Portada del curso" className="h-56" />
               <div className="space-y-5 p-7">
                 <p className="font-serif text-3xl font-bold">{formatPrice(course.price)}</p>
-                <button type="button" disabled className="w-full cursor-not-allowed rounded-full bg-black px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white opacity-50">
-                  Comprar curso
-                </button>
-                <p className="text-sm text-ink-muted">El pago online con Mercado Pago estará disponible pronto.</p>
+                {checkoutEnabled ? (
+                  <BuyButton slug={course.slug} />
+                ) : (
+                  <>
+                    <button type="button" disabled className="w-full cursor-not-allowed rounded-full bg-black px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white opacity-50">
+                      Comprar curso
+                    </button>
+                    <p className="text-sm text-ink-muted">El pago online con Mercado Pago estará disponible pronto.</p>
+                  </>
+                )}
                 <a href={whatsappLink(`Hola! Quiero consultar por el curso "${course.name}".`)} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold hover:text-violet">
                   <MessageCircle size={18} aria-hidden /> Consultar por este curso

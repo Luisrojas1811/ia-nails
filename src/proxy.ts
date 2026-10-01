@@ -7,5 +7,5 @@ export async function proxy(request: NextRequest) {
 
 // Solo rutas de cuenta: las páginas públicas siguen siendo estáticas y rápidas.
 export const config = {
-  matcher: ["/mis-cursos/:path*", "/ingresar", "/registro", "/recuperar", "/actualizar-contrasena"],
+  matcher: ["/mis-cursos/:path*", "/ingresar", "/registro", "/recuperar", "/actualizar-contrasena", "/compra/:path*"],
 };
