@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { User } from "lucide-react";
 import { site } from "@/lib/site";
 import { MobileMenu } from "./MobileMenu";
 
@@ -16,8 +17,11 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <Link href="/#cursos" className="rounded-full bg-black px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-violet">
+          <Link href="/#cursos" className="hidden rounded-full bg-black px-6 py-2.5 sm:inline-flex text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-violet">
             Ver cursos
+          </Link>
+          <Link href="/ingresar" aria-label="Mi cuenta" className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition hover:bg-violet">
+            <User size={18} aria-hidden />
           </Link>
           <MobileMenu />
         </div>
