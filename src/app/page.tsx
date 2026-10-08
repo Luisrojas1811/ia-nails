@@ -1,13 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail, MapPin, MessageCircle } from "lucide-react";
 import { courses } from "@/lib/courses";
 import { site, whatsappLink } from "@/lib/site";
+import { works } from "@/lib/works";
 import { CourseCard } from "@/components/CourseCard";
 import { Divider } from "@/components/Divider";
 import { Placeholder } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
 
 const pill = "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-wider transition";
+const h2 = "font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]";
+const hero = works.find((w) => w.src.endsWith("trabajo-02.jpg"))!;
 
 export default function Home() {
   return (
@@ -31,7 +35,9 @@ export default function Home() {
           </Reveal>
           <Reveal delay={150} className="relative lg:col-span-5">
             <div className="absolute -right-4 -top-4 h-full w-full rotate-2 rounded-xl bg-violet-soft/50" />
-            <Placeholder label="Foto de Iara (pendiente)" className="relative h-[480px] w-full rounded-xl shadow-2xl" />
+            <div className="relative h-[480px] overflow-hidden rounded-xl shadow-2xl">
+              <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[center_60%]" />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -41,23 +47,41 @@ export default function Home() {
       <section id="sobre-mi" className="px-6 py-20 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
-            <Placeholder label="Foto del atelier (pendiente)" className="h-[420px] rounded-xl shadow-xl" />
+            <Placeholder label="Foto de Iara (pendiente)" className="h-[420px] rounded-xl shadow-xl" />
           </Reveal>
           <Reveal delay={100} className="space-y-5 lg:col-span-7">
-            <h2 className="font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]">
-              La manicuría tratada como una <span className="italic text-violet">disciplina escultórica</span>
-            </h2>
-            <p className="max-w-xl text-lg leading-relaxed text-ink-muted">[Bio de Iara — pendiente de confirmar]</p>
+            <h2 className={h2}>La manicuría tratada como una <span className="italic text-violet">disciplina escultórica</span></h2>
+            <div className="max-w-xl space-y-4 text-lg leading-relaxed text-ink-muted">
+              <p>Soy Iara, nail artist y creadora de Ianails. Mi camino empezó en 2022, cuando todavía estaba en el secundario y tenía unas ganas enormes de tener mis propios ingresos.</p>
+              <p>El arte siempre fue lo mío, y las uñas fueron ese lugar donde todo encajó.</p>
+              <p>Hoy me dedico de lleno a este oficio y a compartir lo que aprendí a través de cursos iniciales para personas que, como yo, quieren construir algo propio. Con más de 4 años de experiencia, no solo te enseño técnica: te acompaño desde donde estás, guiándote paso a paso en todo lo que necesites.</p>
+              <p>Así que si estás lista para empezar… bienvenida a Ianails ✨</p>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      <section id="cursos" className="bg-surface-lowest px-6 py-20 lg:px-12 lg:py-28">
+      <section id="trabajos" className="bg-surface-lowest px-6 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <Reveal className="mb-12 max-w-2xl">
+            <h2 className={h2}>Trabajos <span className="italic text-violet">de autor</span></h2>
+          </Reveal>
+          <Reveal>
+            <div className="columns-2 gap-4 lg:columns-3 lg:gap-6">
+              {works.filter((w) => w.featured).map((w) => (
+                <div key={w.src} className="mb-4 break-inside-avoid overflow-hidden rounded-xl bg-surface-low lg:mb-6">
+                  <Image src={w.src} alt={w.alt} width={w.width} height={w.height} sizes="(min-width:1024px) 33vw, 50vw" className="h-auto w-full" />
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="cursos" className="px-6 py-20 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <Reveal className="mb-14 max-w-2xl">
-            <h2 className="font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]">
-              Cursos online <span className="italic text-violet">paso a paso</span>
-            </h2>
+            <h2 className={h2}>Cursos online <span className="italic text-violet">paso a paso</span></h2>
           </Reveal>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {courses.map((c, i) => (
@@ -67,16 +91,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contacto" className="px-6 py-20 lg:px-12 lg:py-28">
-        <Reveal className="mx-auto flex max-w-3xl flex-col items-start gap-6">
-          <h2 className="font-serif text-3xl font-medium tracking-tight lg:text-[40px]">Atelier <span className="italic text-violet">Bernal</span></h2>
-          <p className="flex items-start gap-3 text-lg text-ink-muted">
-            <MapPin className="mt-1 shrink-0 text-violet" size={20} aria-hidden />
-            <span>{site.address.street}, {site.address.area}</span>
-          </p>
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={`${pill} bg-black text-white hover:bg-violet`}>
-            Escribime por WhatsApp <ArrowRight size={18} aria-hidden />
-          </a>
+      <section id="contacto" className="bg-surface-lowest px-6 py-20 lg:px-12 lg:py-28">
+        <Reveal className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+          <div className="space-y-5">
+            <h2 className={h2}>Atelier <span className="italic text-violet">Bernal</span></h2>
+            <p className="flex items-start gap-3 text-lg text-ink-muted">
+              <MapPin className="mt-1 shrink-0 text-violet" size={20} aria-hidden />
+              <span>{site.address.street}, {site.address.area}</span>
+            </p>
+            <ul className="space-y-1 pl-8 text-ink-muted">{site.hours.map((h) => <li key={h}>{h}</li>)}</ul>
+          </div>
+          <div className="flex flex-col items-start gap-4">
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={`${pill} bg-black text-white hover:bg-violet`}>
+              Escribime por WhatsApp <ArrowRight size={18} aria-hidden />
+            </a>
+            <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 break-all text-ink-muted hover:text-violet">
+              <Mail size={18} className="shrink-0" aria-hidden /> {site.email}
+            </a>
+            <a href={`https://instagram.com/${site.instagram}`} target="_blank" rel="noopener noreferrer" className="text-ink-muted hover:text-violet">@{site.instagram}</a>
+          </div>
         </Reveal>
       </section>
     </>
