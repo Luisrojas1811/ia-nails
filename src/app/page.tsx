@@ -5,12 +5,14 @@ import { courses } from "@/lib/courses";
 import { site, whatsappLink } from "@/lib/site";
 import { works } from "@/lib/works";
 import { CourseCard } from "@/components/CourseCard";
+import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { Divider } from "@/components/Divider";
 import { Reveal } from "@/components/Reveal";
 
 const pill = "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-wider transition";
 const h2 = "font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]";
-const hero = works.find((w) => w.src.endsWith("trabajo-02.jpg"))!;
+const featured = works.filter((w) => w.featured);
+const slides = featured.map(({ src, alt }) => ({ src, alt }));
 
 export default function Home() {
   return (
@@ -34,16 +36,27 @@ export default function Home() {
           </Reveal>
           <Reveal delay={150} className="relative lg:col-span-5">
             <div className="absolute -right-4 -top-4 h-full w-full rotate-2 rounded-xl bg-violet-soft/50" />
-            <div className="relative h-[480px] overflow-hidden rounded-xl shadow-2xl">
-              <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[center_60%]" />
-            </div>
+            <HeroSlideshow slides={slides} />
           </Reveal>
         </div>
       </section>
 
       <Divider />
 
-      <section id="sobre-mi" className="px-6 py-20 lg:px-12 lg:py-28">
+      <section id="cursos" className="px-6 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <Reveal className="mb-14 max-w-2xl">
+            <h2 className={h2}>Cursos online <span className="italic text-violet">paso a paso</span></h2>
+          </Reveal>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {courses.map((c, i) => (
+              <Reveal key={c.slug} delay={(i % 3) * 120}><CourseCard course={c} /></Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre-mi" className="bg-surface-lowest px-6 py-20 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-xl">
@@ -62,33 +75,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="trabajos" className="bg-surface-lowest px-6 py-20 lg:px-12 lg:py-28">
+      <section id="trabajos" className="px-6 py-20 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <Reveal className="mb-12 max-w-2xl">
             <h2 className={h2}>Trabajos <span className="italic text-violet">de autor</span></h2>
           </Reveal>
           <Reveal>
             <div className="columns-2 gap-4 lg:columns-3 lg:gap-6">
-              {works.filter((w) => w.featured).map((w) => (
+              {featured.map((w) => (
                 <div key={w.src} className="mb-4 break-inside-avoid overflow-hidden rounded-xl bg-surface-low lg:mb-6">
                   <Image src={w.src} alt={w.alt} width={w.width} height={w.height} sizes="(min-width:1024px) 33vw, 50vw" className="h-auto w-full" />
                 </div>
               ))}
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      <section id="cursos" className="px-6 py-20 lg:px-12 lg:py-28">
-        <div className="mx-auto max-w-7xl">
-          <Reveal className="mb-14 max-w-2xl">
-            <h2 className={h2}>Cursos online <span className="italic text-violet">paso a paso</span></h2>
-          </Reveal>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {courses.map((c, i) => (
-              <Reveal key={c.slug} delay={(i % 3) * 120}><CourseCard course={c} /></Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

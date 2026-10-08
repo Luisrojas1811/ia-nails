@@ -9,12 +9,11 @@ export const site = {
   email: "ianailsss10@gmail.com",
   hours: ["Lunes a viernes: 10 a 20 h", "Sábados: 9 a 14 h", "Domingos: cerrado"],
   nav: [
+    { label: "Cursos", href: "/#cursos" },
     { label: "Sobre mí", href: "/#sobre-mi" },
     { label: "Trabajos", href: "/#trabajos" },
-    { label: "Cursos", href: "/#cursos" },
     { label: "Contacto", href: "/#contacto" },
-  ],
-} as const;
+  ],} as const;
 
 export const whatsappLink = (text?: string) =>
   `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;

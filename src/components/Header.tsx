@@ -7,8 +7,8 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-surface-lowest/90 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 lg:px-12">
-        <Link href="/" aria-label="Ia Nails, ir al inicio" className="flex flex-col leading-none">
-          <span className="font-blackletter text-[34px] leading-none text-plum">Ia Nails</span>
+        <Link href="/" aria-label={`${site.name}, ir al inicio`} className="flex flex-col leading-none">
+          <span className="font-serif text-[26px] font-bold leading-none tracking-tight text-ink">{site.name}</span>
           <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-ink-muted sm:text-[10px] sm:tracking-[0.18em]">{site.tagline}</span>
         </Link>
         <nav aria-label="Principal" className="hidden items-center gap-10 md:flex">

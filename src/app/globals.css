@@ -11,9 +11,7 @@
   --color-violet: #8126d1;
   --color-violet-soft: #f0dbff;
   --color-violet-deep: #2c0051;
-  --color-plum: #58208a;
   --font-serif: var(--font-fraunces), Georgia, serif;
-  --font-blackletter: var(--font-unifraktur), "Old English Text MT", serif;
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
 }
 
