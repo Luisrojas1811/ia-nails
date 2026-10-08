@@ -1,7 +1,7 @@
 // Datos confirmados por Iara. Verificar el mail antes de publicar (¿"ianailsss10" con tres "s"?).
 export const site = {
   name: "IA NAILS",
-  tagline: "Atelier & Academia",
+  tagline: "Nail Artist · Técnica educadora",
   address: { street: "Av. San Martín 180", area: "Bernal Centro, Buenos Aires" },
   whatsapp: "5491126435229", // formato internacional para wa.me
   whatsappDisplay: "+54 9 11 2643-5229",

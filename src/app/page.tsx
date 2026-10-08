@@ -6,7 +6,6 @@ import { site, whatsappLink } from "@/lib/site";
 import { works } from "@/lib/works";
 import { CourseCard } from "@/components/CourseCard";
 import { Divider } from "@/components/Divider";
-import { Placeholder } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
 
 const pill = "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-wider transition";
@@ -47,7 +46,9 @@ export default function Home() {
       <section id="sobre-mi" className="px-6 py-20 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
-            <Placeholder label="Foto de Iara (pendiente)" className="h-[420px] rounded-xl shadow-xl" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-xl">
+              <Image src="/images/iara-sobre-mi.jpg" alt="Iara, nail artist, sonriendo en su atelier" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[center_30%]" />
+            </div>
           </Reveal>
           <Reveal delay={100} className="space-y-5 lg:col-span-7">
             <h2 className={h2}>La manicuría tratada como una <span className="italic text-violet">disciplina escultórica</span></h2>

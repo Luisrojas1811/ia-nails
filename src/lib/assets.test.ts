@@ -16,7 +16,10 @@ describe("imágenes del sitio", () => {
   it("hay al menos 6 trabajos destacados en la galería", () => {
     expect(works.filter((w) => w.featured).length).toBeGreaterThanOrEqual(6);
   });
-  it("el logo existe", () => expect(inPublic("/images/logo.png")).toBe(true));
+  it("el logo y la foto de Iara existen", () => {
+    expect(inPublic("/images/logo.png")).toBe(true);
+    expect(inPublic("/images/iara-sobre-mi.jpg")).toBe(true);
+  });
 });
 
 describe("datos de contacto", () => {
