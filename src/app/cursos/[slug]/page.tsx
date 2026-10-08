@@ -54,13 +54,13 @@ export default async function CoursePage({ params }: Props) {
             </div>
           </div>
           <aside className="lg:col-span-5">
-            <div className="overflow-hidden rounded-2xl bg-surface-lowest shadow-xl lg:sticky lg:top-28">
+            <div className="overflow-hidden rounded-2xl bg-surface-lowest shadow-xl">
               {course.cover ? (
-                <div className="relative aspect-[4/3]">
-                  <Image src={course.cover} alt={`Portada del curso ${course.name}`} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[center_55%]" />
+                <div className="relative aspect-[4/5]">
+                  <Image src={course.cover} alt={`Portada del curso ${course.name}`} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-center" />
                 </div>
               ) : (
-                <Placeholder label="Portada pendiente" className="aspect-[4/3]" />
+                <Placeholder label="Portada pendiente" className="aspect-[4/5]" />
               )}
               <div className="space-y-5 p-7">
                 <p className="font-serif text-3xl font-bold">{formatPrice(course.price)}</p>

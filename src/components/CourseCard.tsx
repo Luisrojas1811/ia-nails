@@ -7,11 +7,11 @@ export function CourseCard({ course }: { course: Course }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl bg-surface shadow-md transition-shadow hover:shadow-xl">
       {course.cover ? (
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <Image src={course.cover} alt={`Portada del curso ${course.name}`} fill sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="object-cover object-[center_55%]" />
+        <div className="relative aspect-[4/5] overflow-hidden">
+          <Image src={course.cover} alt={`Portada del curso ${course.name}`} fill sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="object-cover object-center" />
         </div>
       ) : (
-        <Placeholder label="Portada pendiente" className="aspect-[4/3]" />
+        <Placeholder label="Portada pendiente" className="aspect-[4/5]" />
       )}
       <div className="flex flex-1 flex-col justify-between gap-6 p-7">
         <div className="space-y-3">

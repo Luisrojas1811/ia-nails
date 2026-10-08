@@ -12,7 +12,7 @@ import { Reveal } from "@/components/Reveal";
 const pill = "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-wider transition";
 const h2 = "font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]";
 const featured = works.filter((w) => w.featured);
-const slides = featured.map(({ src, alt }) => ({ src, alt }));
+const slides = featured.map(({ src, alt, width, height }) => ({ src, alt, width, height }));
 
 export default function Home() {
   return (
