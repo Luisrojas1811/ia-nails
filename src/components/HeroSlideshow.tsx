@@ -17,7 +17,7 @@ const arrow =
   "group-hover:pointer-events-auto group-hover:opacity-100 group-has-[:focus-visible]:pointer-events-auto group-has-[:focus-visible]:opacity-100 data-[show=true]:pointer-events-auto data-[show=true]:opacity-100";
 
 // El recuadro queda quieto: cambia la foto de adentro, con un fundido lento con efecto niebla.
-// Mouse: la foto se agranda al pasar por encima y aparecen las flechas.
+// Mouse: al pasar por encima aparecen las flechas (la foto NO se agranda).
 // Celular: tocar la foto la agranda en el punto tocado y muestra las flechas; tocar de nuevo la achica.
 export function HeroSlideshow({ slides, interval = 4500 }: { slides: Slide[]; interval?: number }) {
   const [index, setIndex] = useState(0);
@@ -42,7 +42,7 @@ export function HeroSlideshow({ slides, interval = 4500 }: { slides: Slide[]; in
 
   const go = (step: number) => setIndex((i) => (i + step + count) % count);
 
-  // El zoom crece desde el punto donde está el mouse o donde se tocó.
+  // El zoom del celular crece desde el punto tocado.
   const setOrigin = (clientX: number, clientY: number) => {
     const el = frame.current;
     if (!el) return;
@@ -60,7 +60,6 @@ export function HeroSlideshow({ slides, interval = 4500 }: { slides: Slide[]; in
       className="group relative aspect-[5/6] w-full overflow-hidden rounded-xl bg-[#efe9f4] shadow-2xl"
       onPointerEnter={(e) => { if (e.pointerType === "mouse") setHovering(true); }}
       onPointerLeave={(e) => { if (e.pointerType === "mouse") setHovering(false); }}
-      onPointerMove={(e) => { if (e.pointerType === "mouse") setOrigin(e.clientX, e.clientY); }}
       onPointerUp={(e) => {
         if (e.pointerType !== "touch") return;
         setOrigin(e.clientX, e.clientY);
@@ -80,7 +79,7 @@ export function HeroSlideshow({ slides, interval = 4500 }: { slides: Slide[]; in
               filter: active ? "blur(0px) brightness(1) saturate(1)" : "blur(18px) brightness(1.25) saturate(0.6)",
             }}>
             <div
-              className={`absolute inset-0 transition-[transform,transform-origin] duration-700 ease-out will-change-transform ${zoomed ? "scale-[1.9]" : "scale-100 group-hover:scale-[1.12]"}`}
+              className={`absolute inset-0 transition-[transform,transform-origin] duration-700 ease-out will-change-transform ${zoomed ? "scale-[1.9]" : "scale-100"}`}
               style={{ transformOrigin: "var(--ox, 50%) var(--oy, 50%)" }}>
               <Image src={s.src} alt={s.alt} fill priority={i === 0} sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[center_55%]" />
             </div>

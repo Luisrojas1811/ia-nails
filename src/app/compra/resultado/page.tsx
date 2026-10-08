@@ -30,7 +30,7 @@ export default async function ResultadoPage({ searchParams }: { searchParams: Pr
   return (
     <section className="px-6 py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-xl space-y-5">
-        <h1 role="status" className="font-serif text-4xl font-semibold tracking-tight">{copy.title}</h1>
+        <h1 role="status" className="font-serif text-4xl font-bold tracking-tight">{copy.title}</h1>
         <p className="text-lg leading-relaxed text-ink-muted">{copy.text}</p>
         <Link href={status === "paid" || status === "pending" ? "/mis-cursos" : "/#cursos"}
           className="inline-block rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-violet">

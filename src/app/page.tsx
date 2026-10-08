@@ -10,7 +10,7 @@ import { Divider } from "@/components/Divider";
 import { Reveal } from "@/components/Reveal";
 
 const pill = "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold uppercase tracking-wider transition";
-const h2 = "font-serif text-3xl font-medium tracking-tight lg:text-[40px] lg:leading-[1.2]";
+const h2 = "font-serif text-3xl font-bold tracking-tight lg:text-[40px] lg:leading-[1.2]";
 const featured = works.filter((w) => w.featured);
 const slides = works.filter((w) => w.carousel).map(({ src, alt }) => ({ src, alt }));
 
@@ -21,7 +21,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -top-32 right-10 h-96 w-96 rounded-full bg-violet-soft/40 blur-3xl" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="flex flex-col items-start gap-8 lg:col-span-7">
-            <h1 className="font-serif text-[38px] font-semibold leading-[1.05] tracking-tight lg:text-[56px]">
+            <h1 className="font-serif text-[38px] font-bold leading-[1.05] tracking-tight lg:text-[56px]">
               TÉCNICA DE AUTOR <br /><span className="font-normal italic text-violet">&amp; ALTA FORMACIÓN</span>
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-ink-muted">

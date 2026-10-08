@@ -82,6 +82,15 @@ describe("HeroSlideshow: flechas", () => {
 });
 
 describe("HeroSlideshow: zoom y flechas en el celular", () => {
+  it("con el mouse la foto NO se agranda (solo se agranda al tocarla en el celular)", () => {
+    const { frame } = setup();
+    expect(frame.innerHTML).not.toMatch(/group-hover:scale/);
+    fireEvent.pointerEnter(frame, { pointerType: "mouse" });
+    fireEvent.pointerMove(frame, { pointerType: "mouse", clientX: 50, clientY: 50 });
+    expect(frame.getAttribute("data-zoomed")).toBe("false");
+    expect(frame.innerHTML).not.toMatch(/scale-\[1\.9\]/);
+  });
+
   it("tocar la foto la agranda y muestra las flechas; tocar de nuevo la achica", () => {
     const { frame, tap } = setup();
     expect(frame.getAttribute("data-zoomed")).toBe("false");

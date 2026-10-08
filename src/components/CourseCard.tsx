@@ -16,7 +16,7 @@ export function CourseCard({ course }: { course: Course }) {
       <div className="flex flex-1 flex-col justify-between gap-6 p-7">
         <div className="space-y-3">
           <p className="text-xs font-bold uppercase tracking-wider text-violet">{course.level}</p>
-          <h3 className="font-serif text-[22px] font-semibold leading-snug">{course.name}</h3>
+          <h3 className="font-serif text-[22px] font-bold leading-snug">{course.name}</h3>
           <p className="leading-relaxed text-ink-muted">{course.summary}</p>
         </div>
         <div className="flex items-center justify-between border-t border-surface-high pt-5">

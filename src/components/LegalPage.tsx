@@ -19,12 +19,12 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
             Borrador sujeto a revisión: hay {pending} datos pendientes de confirmar (resaltados).
           </p>
         )}
-        <h1 className="font-serif text-4xl font-semibold tracking-tight lg:text-5xl">{doc.title}</h1>
+        <h1 className="font-serif text-4xl font-bold tracking-tight lg:text-5xl">{doc.title}</h1>
         <p className="mt-3 text-sm text-ink-muted">Última actualización: <Rich text={doc.updated} /></p>
         <div className="mt-10 space-y-9">
           {doc.sections.map((s, i) => (
             <section key={s.heading}>
-              <h2 className="font-serif text-2xl font-medium">{i + 1}. {s.heading}</h2>
+              <h2 className="font-serif text-2xl font-bold">{i + 1}. {s.heading}</h2>
               <div className="mt-3 space-y-3 leading-relaxed text-ink-muted">
                 {s.body.map((p, j) => <p key={j}><Rich text={p} /></p>)}
               </div>

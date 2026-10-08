@@ -34,16 +34,16 @@ export default async function CoursePage({ params }: Props) {
           <div className="space-y-8 lg:col-span-7">
             <div className="space-y-4">
               <span className="inline-block rounded-full bg-violet-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-violet-deep">{course.level}</span>
-              <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight lg:text-5xl">{course.name}</h1>
+              <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight lg:text-5xl">{course.name}</h1>
               <p className="max-w-2xl text-lg leading-relaxed text-ink-muted">{course.summary}</p>
             </div>
             <div className="space-y-3 border-t border-surface-high pt-8">
-              <h2 className="font-serif text-2xl font-medium">Qué vas a aprender</h2>
+              <h2 className="font-serif text-2xl font-bold">Qué vas a aprender</h2>
               <p className="max-w-2xl leading-relaxed text-ink-muted">{course.learn}</p>
               {course.requirement && <p className="text-sm font-semibold text-violet-deep">{course.requirement}</p>}
             </div>
             <div className="space-y-3 border-t border-surface-high pt-8">
-              <h2 className="font-serif text-2xl font-medium">Incluye</h2>
+              <h2 className="font-serif text-2xl font-bold">Incluye</h2>
               <ul className="space-y-2">
                 {benefits.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-ink-muted">
