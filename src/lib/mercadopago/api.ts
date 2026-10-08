@@ -1,5 +1,7 @@
 const BASE = "https://api.mercadopago.com";
 
+export type MpPreference = { id: string; init_point: string; sandbox_init_point?: string };
+
 export type MpPayment = {
   id: number | string;
   status: string;
@@ -17,7 +19,7 @@ function headers() {
 
 export async function createPreference(input: {
   orderId: string; title: string; amount: number; payerEmail?: string; siteUrl: string;
-}): Promise<{ id: string; init_point: string }> {
+}): Promise<MpPreference> {
   const { orderId, siteUrl } = input;
   const isPublic = siteUrl.startsWith("https://"); // MP exige URLs públicas para avisos y auto-retorno
   const res = await fetch(`${BASE}/checkout/preferences`, {
@@ -50,3 +52,7 @@ export async function getPayment(id: string): Promise<MpPayment | null> {
   if (!res.ok) throw new Error(`Mercado Pago (pago): HTTP ${res.status}`);
   return res.json();
 }
+
+// Con credenciales de prueba, Mercado Pago a veces pide usar la URL "sandbox". Se elige con MP_USE_SANDBOX=true.
+export const pickCheckoutUrl = (pref: MpPreference, useSandbox: boolean) =>
+  (useSandbox && pref.sandbox_init_point) || pref.init_point;

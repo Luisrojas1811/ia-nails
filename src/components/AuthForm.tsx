@@ -17,6 +17,7 @@ export function AuthForm({ action, fields, submit, hidden = {} }: {
           <label htmlFor={f.name} className="block text-xs font-semibold uppercase tracking-wider">{f.label}</label>
           <input id={f.name} name={f.name} type={f.type} autoComplete={f.autoComplete} required
             minLength={f.minLength} maxLength={f.maxLength}
+            defaultValue={f.type === "password" ? undefined : state.values?.[f.name]}
             className="w-full rounded-lg bg-surface-low px-4 py-3 outline-none transition focus:bg-surface-lowest focus:ring-2 focus:ring-violet" />
         </div>
       ))}

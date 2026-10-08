@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { getUser } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/payments/repo";
-import { createPreference } from "@/lib/mercadopago/api";
+import { createPreference, pickCheckoutUrl } from "@/lib/mercadopago/api";
 import type { AuthState } from "@/lib/auth";
 
 export async function startCheckout(_: AuthState, fd: FormData): Promise<AuthState> {
@@ -32,8 +32,9 @@ export async function startCheckout(_: AuthState, fd: FormData): Promise<AuthSta
       payerEmail: user.email ?? undefined,
       siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
     });
-    if (!pref.init_point?.startsWith("https://")) throw new Error("init_point inválido");
-    checkoutUrl = pref.init_point;
+    const url = pickCheckoutUrl(pref, process.env.MP_USE_SANDBOX === "true");
+    if (!url?.startsWith("https://")) throw new Error("URL de pago inválida");
+    checkoutUrl = url;
   } catch (e) {
     if (e instanceof Error && e.message === "NEXT_REDIRECT") throw e; // redirect() de arriba
     console.error("[checkout]", e);

@@ -118,3 +118,25 @@ describe("updatePassword", () => {
     expect(auth.updateUser).toHaveBeenCalledWith({ password: "clave-larga-1" });
   });
 });
+
+describe("los errores devuelven lo escrito (nunca la contraseña)", () => {
+  it("ingreso: conserva el email si la contraseña es incorrecta", async () => {
+    auth.signInWithPassword.mockResolvedValue({ error: { code: "invalid_credentials" } });
+    const r = await signIn({}, form({ email: "camila@mail.com", password: "equivocada-1" }));
+    expect(r.error).toBeTruthy();
+    expect(r.values).toEqual({ email: "camila@mail.com" });
+    expect(JSON.stringify(r)).not.toContain("equivocada-1");
+  });
+
+  it("registro: conserva nombre y email, pero no la contraseña", async () => {
+    const r = await signUp({}, form({ name: "Camila Navarro", email: "camila@mail.com", password: "corta" }));
+    expect(r.error).toBeTruthy();
+    expect(r.values).toEqual({ name: "Camila Navarro", email: "camila@mail.com" });
+    expect(JSON.stringify(r)).not.toContain("corta");
+  });
+
+  it("recuperar contraseña: conserva el email inválido para que lo corrija", async () => {
+    const r = await requestReset({}, form({ email: "camila@" }));
+    expect(r.values).toEqual({ email: "camila@" });
+  });
+});

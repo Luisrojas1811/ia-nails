@@ -13,4 +13,4 @@ export function makeWithdrawalCode(now = new Date()) {
 
 export type WithdrawalValues = { first_name: string; last_name: string; email: string; order_ref: string; reason: string; courses: string[] };
 // "values" devuelve lo que escribió la persona para no hacerle volver a cargar todo si hay un error.
-export type WithdrawalState = AuthState & { code?: string; values?: WithdrawalValues };
+export type WithdrawalState = Omit<AuthState, "values"> & { code?: string; values?: WithdrawalValues };

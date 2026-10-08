@@ -12,14 +12,15 @@ const validPassword = (p: string) => p.length >= 8 && p.length <= 72;
 export async function signIn(_: AuthState, fd: FormData): Promise<AuthState> {
   const email = text(fd, "email");
   const password = raw(fd, "password");
-  if (!EMAIL_RE.test(email) || !password) return { error: "Ingresá tu email y tu contraseña." };
+  const fail = (error: string): AuthState => ({ error, values: { email } });
+  if (!EMAIL_RE.test(email) || !password) return fail("Ingresá tu email y tu contraseña.");
   const supabase = await createClient();
-  if (!supabase) return { error: NO_DISPONIBLE };
+  if (!supabase) return fail(NO_DISPONIBLE);
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
-    return { error: error.code === "email_not_confirmed"
+    return fail(error.code === "email_not_confirmed"
       ? "Todavía no confirmaste tu email. Revisá tu bandeja de entrada."
-      : "Email o contraseña incorrectos." };
+      : "Email o contraseña incorrectos.");
   }
   redirect(safeNext(fd.get("next")));
 }
@@ -28,21 +29,22 @@ export async function signUp(_: AuthState, fd: FormData): Promise<AuthState> {
   const name = text(fd, "name");
   const email = text(fd, "email");
   const password = raw(fd, "password");
-  if (name.length < 2) return { error: "Ingresá tu nombre." };
-  if (!EMAIL_RE.test(email)) return { error: "Ingresá un email válido." };
-  if (!validPassword(password)) return { error: "La contraseña debe tener entre 8 y 72 caracteres." };
+  const fail = (error: string): AuthState => ({ error, values: { name, email } });
+  if (name.length < 2) return fail("Ingresá tu nombre.");
+  if (!EMAIL_RE.test(email)) return fail("Ingresá un email válido.");
+  if (!validPassword(password)) return fail("La contraseña debe tener entre 8 y 72 caracteres.");
   const supabase = await createClient();
-  if (!supabase) return { error: NO_DISPONIBLE };
+  if (!supabase) return fail(NO_DISPONIBLE);
   const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name } } });
-  if (error) return { error: "No pudimos crear la cuenta. Revisá los datos e intentá de nuevo." };
+  if (error) return fail("No pudimos crear la cuenta. Revisá los datos e intentá de nuevo.");
   return { message: "Listo. Te enviamos un mail para confirmar tu cuenta." };
 }
 
 export async function requestReset(_: AuthState, fd: FormData): Promise<AuthState> {
   const email = text(fd, "email");
-  if (!EMAIL_RE.test(email)) return { error: "Ingresá un email válido." };
+  if (!EMAIL_RE.test(email)) return { error: "Ingresá un email válido.", values: { email } };
   const supabase = await createClient();
-  if (!supabase) return { error: NO_DISPONIBLE };
+  if (!supabase) return { error: NO_DISPONIBLE, values: { email } };
   await supabase.auth.resetPasswordForEmail(email); // misma respuesta exista o no la cuenta
   return { message: "Si el email tiene una cuenta, te enviamos un link para cambiar la contraseña." };
 }
