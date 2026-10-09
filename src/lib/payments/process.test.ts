@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { MpPayment } from "@/lib/mercadopago/api";
 import { processPayment, type OrderRow, type PaymentsRepo } from "./process";
 import { orderStatusFor } from "./status";
@@ -126,5 +126,50 @@ describe("orderStatusFor", () => {
   it("cancelado solo aplica a órdenes pendientes", () => {
     expect(orderStatusFor("pending", "cancelled")).toBe("cancelled");
     expect(orderStatusFor("paid", "cancelled")).toBe("paid");
+  });
+});
+
+describe("processPayment: avisos por mail", () => {
+  it("avisa UNA sola vez cuando la orden pasa a paga, aunque Mercado Pago reenvíe el aviso", async () => {
+    const ctx = fakeRepo({}); const onPaid = vi.fn(async () => {});
+    await processPayment(pay(), ctx.repo, { onPaid });
+    await processPayment(pay(), ctx.repo, { onPaid });
+    await processPayment(pay(), ctx.repo, { onPaid });
+    expect(onPaid).toHaveBeenCalledTimes(1);
+  });
+
+  it("no avisa si el pago no es aprobado", async () => {
+    const ctx = fakeRepo({}); const onPaid = vi.fn(async () => {});
+    await processPayment(pay({ status: "pending" }), ctx.repo, { onPaid });
+    await processPayment(pay({ status: "rejected" }), ctx.repo, { onPaid });
+    expect(onPaid).not.toHaveBeenCalled();
+  });
+
+  it("el aviso sale después de habilitar el curso", async () => {
+    const ctx = fakeRepo({}); let enrolledWhenNotified: string | null = "no se llamó";
+    await processPayment(pay(), ctx.repo, { onPaid: async () => { enrolledWhenNotified = ctx.state.enrollment; } });
+    expect(enrolledWhenNotified).toBe("active");
+  });
+
+  it("si el mail falla, el pago igual queda procesado y el curso habilitado", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const ctx = fakeRepo({});
+    const result = await processPayment(pay(), ctx.repo, { onPaid: async () => { throw new Error("Resend caído"); } });
+    expect(result).toBe("processed");
+    expect(ctx.state.order?.status).toBe("paid");
+    expect(ctx.state.enrollment).toBe("active");
+  });
+
+  it("monto distinto: avisa al titular y NO habilita", async () => {
+    const ctx = fakeRepo({}); const onMismatch = vi.fn(async () => {}); const onPaid = vi.fn(async () => {});
+    expect(await processPayment(pay({ transaction_amount: 1 }), ctx.repo, { onMismatch, onPaid })).toBe("amount_mismatch");
+    expect(onMismatch).toHaveBeenCalledTimes(1);
+    expect(onPaid).not.toHaveBeenCalled();
+    expect(ctx.state.enrollment).toBeNull();
+  });
+
+  it("sin ganchos funciona igual que antes", async () => {
+    const ctx = fakeRepo({});
+    expect(await processPayment(pay(), ctx.repo)).toBe("processed");
   });
 });

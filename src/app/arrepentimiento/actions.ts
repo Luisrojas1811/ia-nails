@@ -2,6 +2,7 @@
 import { createAdminClient } from "@/lib/payments/repo";
 import { courses } from "@/lib/courses";
 import { makeWithdrawalCode, type WithdrawalState } from "@/lib/withdrawal";
+import { notifyWithdrawal } from "@/lib/email/notify";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const KNOWN = new Set(courses.map((c) => c.slug));
@@ -41,7 +42,14 @@ export async function requestWithdrawal(_: WithdrawalState, fd: FormData): Promi
         course_slugs: values.courses,
         reason: values.reason || null,
       });
-      if (!error) return { code };
+      if (!error) {
+        // El mail con el código sale aparte: si falla, la solicitud ya quedó registrada y se muestra el código en pantalla.
+        const emailed = await notifyWithdrawal({
+          code, firstName: values.first_name, fullName: `${values.first_name} ${values.last_name}`, email: values.email,
+          courses: values.courses, reference: values.order_ref || null, reason: values.reason || null,
+        }).then((r) => r.emailed, () => false);
+        return { code, emailed };
+      }
       if (error.code !== "23505") throw new Error(error.message); // 23505 = código repetido: reintenta
     }
     throw new Error("no se pudo generar un código único");

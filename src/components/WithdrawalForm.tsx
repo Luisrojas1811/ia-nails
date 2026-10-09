@@ -20,7 +20,7 @@ export function WithdrawalForm() {
         <h2 className="font-serif text-2xl font-bold">Recibimos tu solicitud</h2>
         <p className="rounded-xl bg-violet-soft px-5 py-4 text-center font-mono text-2xl font-bold tracking-widest text-violet-deep">{state.code}</p>
         <p className="leading-relaxed text-ink-muted">
-          Guardá este código: identifica tu trámite. Te reintegramos el importe por el mismo medio de pago que usaste y se desactiva el acceso al curso.
+          Guardá este código: identifica tu trámite. {state.emailed && "También te lo enviamos por mail. "}Te reintegramos el importe por el mismo medio de pago que usaste y se desactiva el acceso al curso.
         </p>
       </div>
     );

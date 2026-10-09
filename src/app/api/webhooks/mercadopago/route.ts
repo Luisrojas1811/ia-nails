@@ -3,6 +3,7 @@ import { verifyWebhookSignature } from "@/lib/mercadopago/signature";
 import { getPayment } from "@/lib/mercadopago/api";
 import { processPayment } from "@/lib/payments/process";
 import { createAdminClient, supabaseRepo } from "@/lib/payments/repo";
+import { notifyMismatch, notifyPurchase } from "@/lib/email/notify";
 
 const ok = () => new NextResponse(null, { status: 200 });
 
@@ -26,7 +27,10 @@ export async function POST(request: NextRequest) {
     const payment = await getPayment(dataId);
     if (!payment) return ok(); // p. ej. la notificación de prueba del panel de MP
     const db = createAdminClient();
-    const result = await processPayment(payment, supabaseRepo(db));
+    const result = await processPayment(payment, supabaseRepo(db), {
+      onPaid: (order) => notifyPurchase(db, order),
+      onMismatch: (order, p) => notifyMismatch(order, p),
+    });
     if (result === "amount_mismatch") console.error(`[MP] monto o moneda no coinciden: pago ${dataId}. Revisar a mano.`);
     await db.from("webhook_events").upsert(
       { provider: "mercadopago", event_key: `payment:${dataId}:${request.headers.get("x-request-id") ?? "s/id"}`, payload: { result }, processed_at: new Date().toISOString() },

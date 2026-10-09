@@ -1,8 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/payments/repo", () => ({ createAdminClient: vi.fn() }));
+vi.mock("@/lib/email/notify", () => ({ notifyWithdrawal: vi.fn(async () => ({ emailed: true })) }));
 
 import { createAdminClient } from "@/lib/payments/repo";
+import { notifyWithdrawal } from "@/lib/email/notify";
 import { requestWithdrawal } from "./actions";
 
 const insert = vi.fn();
@@ -73,5 +75,33 @@ describe("requestWithdrawal", () => {
   it("si faltan las claves del servidor, también degrada con gracia", async () => {
     vi.mocked(createAdminClient).mockImplementation(() => { throw new Error("Faltan claves"); });
     expect((await requestWithdrawal({}, form(valid))).error).toBeTruthy();
+  });
+
+  it("manda los mails con el código y los datos, e informa que salió el mail", async () => {
+    const result = await requestWithdrawal({}, form({ ...valid, order_ref: "A-1", reason: "Cambié de idea" }));
+    expect(result.emailed).toBe(true);
+    expect(notifyWithdrawal).toHaveBeenCalledWith(expect.objectContaining({
+      code: result.code, firstName: "Camila", fullName: "Camila Navarro", email: "camila@mail.com",
+      courses: ["capping-polygel"], reference: "A-1", reason: "Cambié de idea",
+    }));
+  });
+
+  it("si el mail no sale (sin configurar), la solicitud igual queda registrada y se ve el código", async () => {
+    vi.mocked(notifyWithdrawal).mockResolvedValueOnce({ emailed: false });
+    const result = await requestWithdrawal({}, form(valid));
+    expect(result.code).toBeTruthy();
+    expect(result.emailed).toBe(false);
+  });
+
+  it("si el envío de mails se rompe de golpe, no se pierde la solicitud", async () => {
+    vi.mocked(notifyWithdrawal).mockRejectedValueOnce(new Error("boom"));
+    const result = await requestWithdrawal({}, form(valid));
+    expect(result.code).toBeTruthy();
+    expect(result.emailed).toBe(false);
+  });
+
+  it("no manda mails si la solicitud no es válida", async () => {
+    await requestWithdrawal({}, form({ ...valid, email: "nada" }));
+    expect(notifyWithdrawal).not.toHaveBeenCalled();
   });
 });
