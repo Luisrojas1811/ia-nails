@@ -22,7 +22,8 @@ export default async function LearnPage({ params, searchParams }: Props) {
   const db = await createClient();
   if (!db) redirect("/ingresar");
 
-  const { data: course } = await db.from("courses").select("id, name").eq("slug", slug).maybeSingle();
+  const { data: course, error: courseError } = await db.from("courses").select("id, name").eq("slug", slug).maybeSingle();
+  if (courseError) throw new Error("No se pudo consultar el curso"); // lo atrapa app/error.tsx
   if (!course) notFound();
   const { data: enrollment } = await db.from("enrollments").select("status, expires_at").eq("user_id", user.id).eq("course_id", course.id).maybeSingle();
   if (!enrollment || !isEnrollmentActive(enrollment)) redirect(`/cursos/${slug}`); // todavía no lo compró

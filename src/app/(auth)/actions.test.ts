@@ -140,3 +140,26 @@ describe("los errores devuelven lo escrito (nunca la contraseña)", () => {
     expect(r.values).toEqual({ email: "camila@" });
   });
 });
+
+describe("cuando Supabase no responde (caído o en pausa)", () => {
+  const down = { name: "AuthRetryableFetchError", status: 0, message: "fetch failed" };
+
+  it("ingreso: avisa del problema del servidor y NO dice que la contraseña es incorrecta", async () => {
+    auth.signInWithPassword.mockResolvedValue({ error: down });
+    const r = await signIn({}, form({ email: "camila@mail.com", password: "clave-segura-1" }));
+    expect(r.error).toMatch(/conectar con el servidor/);
+    expect(r.error).not.toMatch(/incorrectos/);
+    expect(r.values).toEqual({ email: "camila@mail.com" });
+  });
+
+  it("ingreso: un error 500 también cuenta como servidor caído", async () => {
+    auth.signInWithPassword.mockResolvedValue({ error: { status: 503 } });
+    expect((await signIn({}, form({ email: "a@b.com", password: "x" }))).error).toMatch(/conectar con el servidor/);
+  });
+
+  it("registro: avisa del servidor y no culpa a los datos", async () => {
+    auth.signUp.mockResolvedValue({ error: down });
+    const r = await signUp({}, form({ name: "Camila Navarro", email: "camila@mail.com", password: "clave-segura-1" }));
+    expect(r.error).toMatch(/conectar con el servidor/);
+  });
+});

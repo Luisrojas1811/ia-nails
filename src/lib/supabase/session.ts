@@ -19,8 +19,12 @@ export async function updateSession(request: NextRequest) {
         },
       },
     });
-    const { data } = await supabase.auth.getClaims();
-    loggedIn = Boolean(data?.claims);
+    try {
+      const { data } = await supabase.auth.getClaims();
+      loggedIn = Boolean(data?.claims);
+    } catch {
+      loggedIn = false; // Supabase no responde: no se rompe el sitio
+    }
   }
 
   const { pathname, search } = request.nextUrl;

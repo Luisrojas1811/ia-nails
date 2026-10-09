@@ -19,6 +19,10 @@ export async function createClient() {
 export async function getUser() {
   const supabase = await createClient();
   if (!supabase) return null;
-  const { data } = await supabase.auth.getUser();
-  return data.user;
+  try {
+    const { data } = await supabase.auth.getUser();
+    return data.user;
+  } catch {
+    return null; // Supabase no responde: se trata como "sin sesión" en vez de romper la página
+  }
 }

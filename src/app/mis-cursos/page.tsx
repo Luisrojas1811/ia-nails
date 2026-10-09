@@ -16,7 +16,7 @@ export default async function MisCursosPage() {
   const user = await getUser();
   if (!user) redirect("/ingresar?next=/mis-cursos");
   const db = await createClient();
-  const myCourses = db ? await getMyCourses(db, user.id) : [];
+  const myCourses = db ? await getMyCourses(db, user.id) : null;
   const name = typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : "";
 
   return (
@@ -31,7 +31,11 @@ export default async function MisCursosPage() {
           </form>
         </div>
 
-        {myCourses.length === 0 ? (
+        {myCourses === null ? (
+          <p role="alert" className="rounded-2xl bg-surface-lowest p-8 text-ink-muted shadow-md">
+            No pudimos cargar tus cursos en este momento. Probá de nuevo en unos minutos.
+          </p>
+        ) : myCourses.length === 0 ? (
           <div className="rounded-2xl bg-surface-lowest p-8 shadow-md">
             <h2 className="font-serif text-2xl font-bold">Todavía no tenés cursos</h2>
             <p className="mt-2 text-ink-muted">Cuando compres un curso, va a aparecer acá.</p>

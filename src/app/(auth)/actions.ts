@@ -8,6 +8,10 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const text = (fd: FormData, k: string) => String(fd.get(k) ?? "").trim();
 const raw = (fd: FormData, k: string) => String(fd.get(k) ?? "");
 const validPassword = (p: string) => p.length >= 8 && p.length <= 72;
+const SERVICIO_CAIDO = "No pudimos conectar con el servidor. Probá de nuevo en unos minutos.";
+// Supabase caído o en pausa: no es culpa de la persona, no hay que decirle que se equivocó.
+const isServiceError = (e: { name?: string; status?: number }) =>
+  e.name === "AuthRetryableFetchError" || (typeof e.status === "number" && (e.status === 0 || e.status >= 500));
 
 export async function signIn(_: AuthState, fd: FormData): Promise<AuthState> {
   const email = text(fd, "email");
@@ -18,6 +22,7 @@ export async function signIn(_: AuthState, fd: FormData): Promise<AuthState> {
   if (!supabase) return fail(NO_DISPONIBLE);
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
+    if (isServiceError(error)) return fail(SERVICIO_CAIDO);
     return fail(error.code === "email_not_confirmed"
       ? "Todavía no confirmaste tu email. Revisá tu bandeja de entrada."
       : "Email o contraseña incorrectos.");
@@ -36,7 +41,9 @@ export async function signUp(_: AuthState, fd: FormData): Promise<AuthState> {
   const supabase = await createClient();
   if (!supabase) return fail(NO_DISPONIBLE);
   const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name } } });
-  if (error) return fail("No pudimos crear la cuenta. Revisá los datos e intentá de nuevo.");
+  if (error) {
+    return fail(isServiceError(error) ? SERVICIO_CAIDO : "No pudimos crear la cuenta. Revisá los datos e intentá de nuevo.");
+  }
   return { message: "Listo. Te enviamos un mail para confirmar tu cuenta." };
 }
 

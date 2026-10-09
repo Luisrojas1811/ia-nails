@@ -5,8 +5,10 @@ export type MyCourse = { slug: string; name: string; total: number; done: number
 
 // Cursos que la persona tiene habilitados, con su avance. Las reglas de seguridad (RLS) de la base
 // ya limitan todo a sus propias filas; el filtro por user_id es una segunda barrera.
-export async function getMyCourses(db: SupabaseClient, userId: string): Promise<MyCourse[]> {
-  const { data: enrollments } = await db.from("enrollments").select("course_id, status, expires_at").eq("user_id", userId);
+// Devuelve null si no se pudo consultar la base (para no confundirlo con "todavía no tiene cursos").
+export async function getMyCourses(db: SupabaseClient, userId: string): Promise<MyCourse[] | null> {
+  const { data: enrollments, error } = await db.from("enrollments").select("course_id, status, expires_at").eq("user_id", userId);
+  if (error) return null;
   const active = ((enrollments ?? []) as { course_id: string; status: string; expires_at: string | null }[]).filter((e) => isEnrollmentActive(e));
   if (active.length === 0) return [];
   const ids = active.map((e) => e.course_id);
@@ -15,6 +17,7 @@ export async function getMyCourses(db: SupabaseClient, userId: string): Promise<
     db.from("lessons").select("id, course_id").in("course_id", ids),
     db.from("lesson_progress").select("lesson_id").eq("user_id", userId),
   ]);
+  if (courses.error || lessons.error || progress.error) return null;
   const done = new Set(((progress.data ?? []) as { lesson_id: string }[]).map((p) => p.lesson_id));
   const lessonRows = (lessons.data ?? []) as { id: string; course_id: string }[];
   return ((courses.data ?? []) as { id: string; slug: string; name: string }[]).map((c) => ({
