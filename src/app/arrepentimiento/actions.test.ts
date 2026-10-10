@@ -1,10 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/payments/repo", () => ({ createAdminClient: vi.fn() }));
+vi.mock("@/lib/withdrawal-limits", async (original) => ({
+  ...(await original<typeof import("@/lib/withdrawal-limits")>()),
+  checkWithdrawalLimits: vi.fn(async () => "ok"),
+}));
 vi.mock("@/lib/email/notify", () => ({ notifyWithdrawal: vi.fn(async () => ({ emailed: true })) }));
 
 import { createAdminClient } from "@/lib/payments/repo";
 import { notifyWithdrawal } from "@/lib/email/notify";
+import { checkWithdrawalLimits } from "@/lib/withdrawal-limits";
 import { requestWithdrawal } from "./actions";
 
 const insert = vi.fn();
@@ -103,5 +108,37 @@ describe("requestWithdrawal", () => {
   it("no manda mails si la solicitud no es válida", async () => {
     await requestWithdrawal({}, form({ ...valid, email: "nada" }));
     expect(notifyWithdrawal).not.toHaveBeenCalled();
+  });
+
+  describe("freno contra el spam", () => {
+    it("si ya mandó demasiadas con ese mail: no guarda, no manda mails y ofrece WhatsApp", async () => {
+      vi.mocked(checkWithdrawalLimits).mockResolvedValueOnce("email");
+      const result = await requestWithdrawal({}, form(valid));
+      expect(result.code).toBeUndefined();
+      expect(result.error).toMatch(/WhatsApp/);
+      expect(result.values).toMatchObject({ first_name: "Camila" }); // no pierde lo escrito
+      expect(insert).not.toHaveBeenCalled();
+      expect(notifyWithdrawal).not.toHaveBeenCalled();
+    });
+
+    it("si hay demasiadas en la hora: tampoco guarda y avisa", async () => {
+      vi.mocked(checkWithdrawalLimits).mockResolvedValueOnce("global");
+      const result = await requestWithdrawal({}, form(valid));
+      expect(result.error).toMatch(/muchas solicitudes/);
+      expect(insert).not.toHaveBeenCalled();
+    });
+
+    it("cuenta y guarda el mail en minúsculas, así Camila@Mail.com y camila@mail.com son el mismo", async () => {
+      await requestWithdrawal({}, form({ ...valid, email: "Camila@Mail.COM" }));
+      expect(checkWithdrawalLimits).toHaveBeenCalledWith(expect.anything(), "camila@mail.com");
+      expect(insert).toHaveBeenCalledWith(expect.objectContaining({ email: "camila@mail.com" }));
+      expect(notifyWithdrawal).toHaveBeenCalledWith(expect.objectContaining({ email: "camila@mail.com" }));
+    });
+
+    it("una solicitud inválida o de bot no consulta los límites", async () => {
+      await requestWithdrawal({}, form({ ...valid, email: "nada" }));
+      await requestWithdrawal({}, form({ ...valid, website: "http://spam.com" }));
+      expect(checkWithdrawalLimits).not.toHaveBeenCalled();
+    });
   });
 });

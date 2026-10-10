@@ -76,6 +76,9 @@ Para reintegrar: hacerlo desde el panel de Mercado Pago. Cuando el pago figura c
 | Fotos de trabajos y carrusel | `src/lib/works.ts` + `public/images/trabajos/` |
 | Colores y tipografías | `src/app/globals.css` y `src/app/layout.tsx` |
 
+### Si una persona real queda bloqueada en el botón de arrepentimiento
+El formulario limita a **3 solicitudes por mail por día** y **20 por hora en total** (`src/lib/withdrawal-limits.ts`). Si alguien llega al límite, ve un mensaje que le ofrece WhatsApp. Se libera solo pasadas 24 horas; mientras tanto se puede registrar su solicitud a mano desde el Table Editor (tabla `withdrawal_requests`), con un código de la forma `ARR-AAAAMMDD-XXXXXX`.
+
 ## Si algo falla
 | Síntoma | Qué mirar |
 |---|---|

@@ -127,4 +127,4 @@ Se cargan en `.env.local` (computadora) y en Vercel → Settings → Environment
 - **No hay panel de administración:** los cursos, clases y videos se cargan con comandos SQL (están en `docs/`). Es parte de la etapa 2.
 - **Los precios viven en dos lugares:** el que se muestra (`src/lib/courses.ts`) y el que se cobra (tabla `courses`). Un test verifica que `seed.sql` coincida con el catálogo, pero **la base real hay que actualizarla a mano** (ver `docs/OPERACION.md`).
 - **El certificado virtual** no se genera automáticamente.
-- **Sin captcha** en el botón de arrepentimiento todavía.
+- **Botón de arrepentimiento sin captcha:** lo frena un límite por mail (3 por día) y general (20 por hora), definido en `src/lib/withdrawal-limits.ts`. Un captcha es opcional y se puede sumar después.

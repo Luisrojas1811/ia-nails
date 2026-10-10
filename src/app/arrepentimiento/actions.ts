@@ -3,6 +3,7 @@ import { createAdminClient } from "@/lib/payments/repo";
 import { courses } from "@/lib/courses";
 import { makeWithdrawalCode, type WithdrawalState } from "@/lib/withdrawal";
 import { notifyWithdrawal } from "@/lib/email/notify";
+import { checkWithdrawalLimits, LIMIT_MESSAGES } from "@/lib/withdrawal-limits";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const KNOWN = new Set(courses.map((c) => c.slug));
@@ -32,12 +33,15 @@ export async function requestWithdrawal(_: WithdrawalState, fd: FormData): Promi
 
   try {
     const db = createAdminClient();
+    const emailKey = values.email.toLowerCase(); // "Camila@Mail.com" y "camila@mail.com" cuentan como el mismo
+    const limit = await checkWithdrawalLimits(db, emailKey);
+    if (limit !== "ok") return fail(LIMIT_MESSAGES[limit]);
     for (let attempt = 0; attempt < 3; attempt++) {
       const code = makeWithdrawalCode();
       const { error } = await db.from("withdrawal_requests").insert({
         code,
         full_name: `${values.first_name} ${values.last_name}`,
-        email: values.email,
+        email: emailKey,
         reference: values.order_ref || null,
         course_slugs: values.courses,
         reason: values.reason || null,
@@ -45,7 +49,7 @@ export async function requestWithdrawal(_: WithdrawalState, fd: FormData): Promi
       if (!error) {
         // El mail con el código sale aparte: si falla, la solicitud ya quedó registrada y se muestra el código en pantalla.
         const emailed = await notifyWithdrawal({
-          code, firstName: values.first_name, fullName: `${values.first_name} ${values.last_name}`, email: values.email,
+          code, firstName: values.first_name, fullName: `${values.first_name} ${values.last_name}`, email: emailKey,
           courses: values.courses, reference: values.order_ref || null, reason: values.reason || null,
         }).then((r) => r.emailed, () => false);
         return { code, emailed };

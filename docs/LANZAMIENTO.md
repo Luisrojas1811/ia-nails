@@ -53,7 +53,8 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] Supabase → Advisors (seguridad) sin errores
 - [ ] Ninguna clave se subió a GitHub ni se compartió por chat (si pasó, rotarla)
 - [ ] Usuarios, compras y solicitudes de prueba eliminados (en este orden: `payments`, `enrollments`, `orders`)
-- [ ] Captcha en el botón de arrepentimiento (**pendiente de construir**)
+- [x] Freno contra el spam en el botón de arrepentimiento (3 por mail por día, 20 por hora). Un captcha es opcional
+- [ ] Aplicada en Supabase la migración `20261011000000_arrepentimiento_indices.sql`
 - [ ] Revisión de accesibilidad y contraste (**pendiente**)
 - [ ] Probado todo desde un celular real
 
