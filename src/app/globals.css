@@ -11,6 +11,8 @@
   --color-violet: #8126d1;
   --color-violet-soft: #f0dbff;
   --color-violet-deep: #2c0051;
+  --color-outline: #7c757e;   /* bordes de campos: 3:1 mínimo contra el fondo (WCAG 1.4.11) */
+  --color-error: #b3261e;     /* mensajes de error */
   --font-serif: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
 }

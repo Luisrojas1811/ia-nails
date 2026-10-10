@@ -17,7 +17,13 @@ export const generateStaticParams = () => courses.map((c) => ({ slug: c.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const course = getCourse((await params).slug);
-  return course ? { title: course.name, description: course.summary } : {};
+  if (!course) return {};
+  return {
+    title: course.name,
+    description: course.summary,
+    alternates: { canonical: `/cursos/${course.slug}` },
+    openGraph: { title: course.name, description: course.summary, siteName: "IA NAILS", locale: "es_AR", type: "website", images: course.cover ? [{ url: course.cover }] : undefined },
+  };
 }
 
 export default async function CoursePage({ params }: Props) {

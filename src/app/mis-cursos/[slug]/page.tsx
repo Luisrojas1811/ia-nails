@@ -81,7 +81,7 @@ export default async function LearnPage({ params, searchParams }: Props) {
                         className={`flex items-start gap-3 px-4 py-3 transition hover:bg-surface-low ${isCurrent ? "bg-violet-soft/50" : ""}`}>
                         {completed.has(l.id)
                           ? <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-violet" aria-label="Vista" />
-                          : <Circle size={20} className="mt-0.5 shrink-0 text-line" aria-label="Sin ver" />}
+                          : <Circle size={20} className="mt-0.5 shrink-0 text-ink-muted" aria-label="Sin ver" />}
                         <span className="flex-1 text-sm font-semibold">{l.position}. {l.title}</span>
                         <span className="shrink-0 text-xs text-ink-muted">{formatDuration(l.duration_seconds)}</span>
                       </Link>

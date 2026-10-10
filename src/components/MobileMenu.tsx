@@ -1,14 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const button = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      button.current?.focus();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
   return (
     <div className="md:hidden">
-      <button type="button" aria-expanded={open} aria-controls="menu-movil" aria-label={open ? "Cerrar menú" : "Abrir menú"}
+      <button ref={button} type="button" aria-expanded={open} aria-controls="menu-movil" aria-label={open ? "Cerrar menú" : "Abrir menú"}
         onClick={() => setOpen(!open)} className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-high">
         {open ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
       </button>

@@ -11,7 +11,7 @@ export function BuyButton({ slug }: { slug: string }) {
         className="w-full rounded-full bg-black px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-violet disabled:opacity-60">
         {pending ? "Redirigiendo a Mercado Pago…" : "Comprar curso"}
       </button>
-      {state.error && <p role="alert" className="text-sm font-semibold text-red-700">{state.error}</p>}
+      {state.error && <p role="alert" className="text-sm font-semibold text-error">{state.error}</p>}
     </form>
   );
 }

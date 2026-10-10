@@ -7,7 +7,7 @@ import { requestWithdrawal } from "@/app/arrepentimiento/actions";
 
 const MAX = 1000;
 const label = "block text-xs font-bold uppercase tracking-wider";
-const input = "mt-2 w-full rounded-lg bg-surface-low px-4 py-3 outline-none transition focus:bg-surface-lowest focus:ring-2 focus:ring-violet";
+const input = "mt-2 w-full rounded-lg border border-outline bg-surface-low px-4 py-3 outline-none transition focus:bg-surface-lowest focus:ring-2 focus:ring-violet";
 
 export function WithdrawalForm() {
   const [state, action, pending] = useActionState<WithdrawalState, FormData>(requestWithdrawal, {});
@@ -73,7 +73,7 @@ export function WithdrawalForm() {
         <label>Sitio web <input name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
 
-      {state.error && <p role="alert" className="text-sm font-semibold text-red-700">{state.error}</p>}
+      {state.error && <p role="alert" className="text-sm font-semibold text-error">{state.error}</p>}
 
       <button type="submit" disabled={pending}
         className="inline-flex items-center gap-3 rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-violet disabled:opacity-60">

@@ -3,12 +3,12 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const walk = (dir: string): string[] =>
-  readdirSync(dir).flatMap((f) => { const p = join(dir, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
+  readdirSync(dir).flatMap((f) => { const p = join(dir, f); return statSync(p).isDirectory() ? walk(p) : [p.replace(/\\/g, "/")]; }); // en Windows las rutas traen "\", se unifican con "/"
 
 const isSource = (f: string) => /\.(ts|tsx)$/.test(f) && !/\.test\.(ts|tsx)$/.test(f);
 const envVars = [...new Set(
   walk("src").filter(isSource).flatMap((f) => [...readFileSync(f, "utf8").matchAll(/\benv\.([A-Z][A-Z0-9_]{3,})/g)].map((m) => m[1])),
-)].filter((v) => v !== "NODE_ENV").sort();
+)].filter((v) => !["NODE_ENV", "VERCEL_ENV", "VERCEL_PROJECT_PRODUCTION_URL"].includes(v)) // variables que pone el propio sistema.sort();
 
 const example = readFileSync(".env.example", "utf8");
 const readme = readFileSync("README.md", "utf8");

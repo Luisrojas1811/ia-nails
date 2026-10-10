@@ -1,0 +1,7 @@
+import type { MetadataRoute } from "next";
+import { indexingAllowed, PRIVATE_PATHS, siteUrl } from "@/lib/seo";
+
+export default function robots(): MetadataRoute.Robots {
+  if (!indexingAllowed()) return { rules: { userAgent: "*", disallow: "/" } };
+  return { rules: { userAgent: "*", allow: "/", disallow: PRIVATE_PATHS }, sitemap: `${siteUrl()}/sitemap.xml` };
+}

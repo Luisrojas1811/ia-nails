@@ -57,10 +57,13 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] Revisión de accesibilidad y contraste (**pendiente**)
 - [ ] Probado todo desde un celular real
 
-## 8. Buscadores
-- [ ] Quitar el bloqueo: en `src/app/layout.tsx`, la línea `robots: { index: false, follow: false }` (tiene un TODO)
-- [ ] Mapa del sitio y `robots.txt` (**pendientes de construir**)
+## 8. Buscadores y seguridad de la web
+- [ ] Cargar `ALLOW_INDEXING=true` **solo en Production** en Vercel y hacer Redeploy (los despliegues de prueba nunca se indexan, aunque la variable esté prendida)
+- [ ] Comprobar `tudominio.com/robots.txt` (tiene que permitir todo menos las páginas privadas y apuntar al mapa del sitio) y `tudominio.com/sitemap.xml` (5 páginas fijas + los cursos)
+- [ ] Pedir el sitio en Google Search Console y enviar el mapa del sitio
+- [ ] Comprobar que no se muestra ninguna página privada en Google (ingresar, mis cursos, compra)
 - [ ] Que no quede ninguna página de prueba publicada
+- [ ] Política de contenido (CSP): navegar todo el sitio **en producción** con la consola abierta (F12); si no aparece ningún aviso de "Content Security Policy", poner `CSP_ENFORCE = true` en `next.config.ts` y volver a probar la compra y un video
 
 ## 9. Día del lanzamiento y después
 - [ ] Mirar Vercel → Logs durante las primeras horas

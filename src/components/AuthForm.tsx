@@ -18,10 +18,10 @@ export function AuthForm({ action, fields, submit, hidden = {} }: {
           <input id={f.name} name={f.name} type={f.type} autoComplete={f.autoComplete} required
             minLength={f.minLength} maxLength={f.maxLength}
             defaultValue={f.type === "password" ? undefined : state.values?.[f.name]}
-            className="w-full rounded-lg bg-surface-low px-4 py-3 outline-none transition focus:bg-surface-lowest focus:ring-2 focus:ring-violet" />
+            className="w-full rounded-lg border border-outline bg-surface-low px-4 py-3 outline-none transition focus:bg-surface-lowest focus:ring-2 focus:ring-violet" />
         </div>
       ))}
-      {state.error && <p role="alert" className="text-sm font-semibold text-red-700">{state.error}</p>}
+      {state.error && <p role="alert" className="text-sm font-semibold text-error">{state.error}</p>}
       {state.message && <p role="status" className="text-sm font-semibold text-violet-deep">{state.message}</p>}
       <button type="submit" disabled={pending}
         className="w-full rounded-full bg-black px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-violet disabled:opacity-60">

@@ -50,6 +50,7 @@ src/
     cursos/[slug]/      Página de venta de cada curso + botón de compra
     mis-cursos/         Cursos comprados, clases con video y progreso
     terminos, privacidad, devoluciones/   Textos legales
+    robots.ts, sitemap.ts   Reglas para buscadores y mapa del sitio
   components/           Piezas de interfaz (carrusel, tarjetas, formularios)
   content/legal.ts      Textos legales (los datos que faltan van como [[PENDIENTE: ...]])
   lib/
@@ -96,6 +97,7 @@ Se cargan en `.env.local` (computadora) y en Vercel → Settings → Environment
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Clave pública de Supabase | No |
 | `SUPABASE_SECRET_KEY` | Clave con control total de la base | **Sí** |
 | `NEXT_PUBLIC_SITE_URL` | Dirección pública del sitio, sin barra final | No |
+| `ALLOW_INDEXING` | `true` deja entrar a Google (solo en Production; los despliegues de prueba nunca se indexan) | No |
 | `NEXT_PUBLIC_CHECKOUT_ENABLED` | `true` activa el botón de compra | No |
 | `MP_ACCESS_TOKEN` | Credencial de Mercado Pago (de prueba o de producción) | **Sí** |
 | `MP_WEBHOOK_SECRET` | Clave para validar los avisos de Mercado Pago | **Sí** |
