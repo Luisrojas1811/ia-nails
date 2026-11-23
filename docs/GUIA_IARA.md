@@ -3,34 +3,40 @@
 Esta guía es para vos, Iara. No hace falta saber de programación: acá está lo que necesitamos que nos pases para lanzar y cómo se usa la web en el día a día.
 
 ## 1. Lo que necesitamos de vos para lanzar
+Ordenado por prioridad: lo de arriba es lo que más frena. Se puede ir pasando de a poco.
 
-### Datos del negocio (van en los términos y condiciones, los pide la ley)
-- [ ] Nombre completo, o razón social si tenés empresa
-- [ ] DNI o CUIT
-- [ ] Condición fiscal (monotributista, responsable inscripta…)
+### Paso 1: Lo urgente
+- [ ] Acceso de **Administrator** en Supabase para Luis: supabase.com → tu organización → Settings → Team → Invite → rol Administrator
+- [ ] Nombre completo o razón social, DNI o CUIT y condición fiscal (van en los términos, los pide la ley)
 - [ ] Confirmar el mail de contacto: ¿es `ianailsss10@gmail.com`, con tres "s"?
-- [ ] Confirmar que el nombre de la marca se escriba **IA NAILS** en todo el sitio
+- [ ] Confirmar que la marca se escriba **IA NAILS**
+- [ ] **Precios finales** y si incluyen impuestos. Hoy (provisorios): Soft Gel inicial $15.000 · Semipermanente, Nivelación y Capping gel $40.000 · Capping Polygel $25.000 · Nail Art inicial $8.000 · Nail Art nivel 2 $15.000
 
-### Decisiones
-- [ ] **Precios finales** de cada curso, y si **incluyen impuestos**. Hoy figuran (provisorios):
-  Soft Gel inicial $15.000 · Semipermanente, Nivelación y Capping gel $40.000 · Capping Polygel $25.000 · Nail Art inicial $8.000 · Nail Art nivel 2 $15.000
-- [ ] ¿Vas a entregar **certificado**? Si es así, ¿cómo (PDF por mail, impreso…) y con qué condición (terminar todas las clases)?
-- [ ] **Devoluciones**: en qué plazo devolvés la plata y cuándo un curso ya cuenta como "usado" (por ejemplo, después de ver la primera clase). Lo ideal es definirlo con tu contador o abogado.
-- [ ] ¿Vas a mandar **promociones o novedades** por mail a las alumnas?
-- [ ] El **dominio** (la dirección de la web), por ejemplo `ianails.com.ar`
+### Paso 2: Decisiones
+- [ ] **Dominio** (ej.: `ianails.com.ar`). Se compra en nic.ar con clave fiscal de ARCA
+- [ ] **Certificado**: ¿se entrega? ¿PDF o impreso? ¿Con qué condición?
+- [ ] **Devoluciones** (con tu contador): plazo para devolver la plata y desde cuándo un curso cuenta como "usado"
+- [ ] ¿Se mandan promociones o novedades por mail?
+- [ ] Con tu contador: si hay que inscribir la base de datos y si va el enlace a Defensa del Consumidor
 
-### Material
-- [ ] Los **videos** de cada clase (ver la sección 3)
-- [ ] Portadas para **Capping Polygel**, **Nail Art inicial** y **Nail Art nivel 2**, en vertical, como las de los otros cursos
-- [ ] Una foto tuya para "Sobre mí", vertical y con buena luz (la actual es provisoria)
-- [ ] El logo en buena calidad: el archivo original o un PNG con fondo transparente
+### Paso 3: Fotos (mandalas como *documento*, no como foto, para no perder calidad)
+- [ ] Portadas verticales de **Capping Polygel**, **Nail Art inicial** y **Nail Art nivel 2**
+- [ ] Foto tuya para "Sobre mí", vertical y con buena luz
+- [ ] Logo en buena calidad (original o PNG sin fondo)
 
-### Cuentas a tu nombre
-La web cobra y guarda datos a tu nombre, así que las cuentas tienen que ser tuyas. Luis te ayuda a crearlas y queda como colaborador:
-- **Mercado Pago**: ahí entra la plata de las ventas
-- **Dominio**: en nic.ar si termina en `.com.ar`
-- **Vercel** (el hosting de la web) y **Supabase** (la base de datos de alumnas y compras): planes pagos, en dólares por mes
-- **Bunny** (los videos) y **Resend** (los mails automáticos): se pagan según el uso, son montos chicos
+### Paso 4: Videos (de a un curso por vez, por Google Drive o WeTransfer)
+- [ ] Un archivo por clase, nombrado con su número (`1.mp4`, `2.mp4`…)
+- [ ] Una lista con número, título y minutos de cada clase (ver la sección 3)
+
+### Paso 5: Cuentas a tu nombre (Luis queda como colaborador)
+- [ ] **Mercado Pago**: ahí entra la plata. Se configura juntos en una llamada
+- [ ] **Supabase** (base de datos) y **Vercel** (hosting): planes pagos, en dólares por mes
+- [ ] **Bunny** (videos) y **Resend** (mails automáticos): se pagan según el uso o tienen plan gratis
+
+### Paso 6: Antes de lanzar
+- [ ] Leer los términos, la privacidad y las devoluciones publicados en la web
+- [ ] Probar la web desde tu celular: crear una cuenta y mirar los cursos
+- [ ] Una compra real de poca plata, que después se devuelve, para probar todo de punta a punta
 
 ## 2. Cómo funciona una venta
 1. La alumna crea su cuenta en la web y toca **Comprar curso**.
