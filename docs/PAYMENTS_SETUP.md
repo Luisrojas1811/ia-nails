@@ -15,7 +15,7 @@ Credenciales, Pruebas (Cuentas de prueba y Tarjetas de prueba) y Webhooks.
 
 ## 3. Webhook
 1. Aplicación → **Webhooks → Configurar notificaciones.**
-2. URL del modo de pruebas: `https://ia-nails.vercel.app/api/webhooks/mercadopago` (después, la del dominio real en modo productivo).
+2. URL del modo de pruebas: `https://ia-nails-lpwe.vercel.app/api/webhooks/mercadopago` (después, la del dominio real en modo productivo).
 3. Evento: **Pagos**. Guardar y revelar la **clave secreta** → va a `MP_WEBHOOK_SECRET`.
 
 ## 4. Variables en Vercel (Production) y redeploy
