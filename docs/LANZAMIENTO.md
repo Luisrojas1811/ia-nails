@@ -16,14 +16,14 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] Datos del titular cargados: nombre o razón social, DNI o CUIT, condición fiscal
 - [ ] Un abogado o contador revisó términos, privacidad y devoluciones
 - [ ] Decidido cuándo se considera "usado" un curso (reembolsos)
-- [ ] Consultado si hay que inscribir la base de datos y si corresponde el enlace de Defensa del Consumidor
+- [x] Consultado: no hace falta inscribir la base de datos ni mostrar el enlace de Defensa del Consumidor
 - [ ] Botón de arrepentimiento en un lugar visible desde el primer acceso (hoy está en el pie de página: confirmar que alcanza)
-- [ ] Decidido cómo se entrega el certificado virtual
+- [x] Certificado: PDF al terminar el curso, a pedido por WhatsApp o mail
 
 ## 3. Cuentas de servicios (a nombre de Iara)
 - [ ] **Supabase en plan pago** (los proyectos gratuitos se pausan solos y no tienen copias automáticas)
 - [ ] **Vercel en plan Pro** (el plan gratuito no permite uso comercial)
-- [ ] Dominio registrado a nombre de Iara y apuntando a Vercel
+- [ ] Dominio `ianails10.com.ar` registrado a nombre de Iara y apuntando a Vercel
 - [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara (todo lo paga ella desde el principio), con Luis como colaborador donde se pueda
 
 ## 4. Pagos (Mercado Pago)

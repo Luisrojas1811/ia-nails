@@ -13,7 +13,7 @@ export const terminos: LegalDoc = {
       "Podés escribirnos por WhatsApp al +54 9 11 2643-5229 o a ianailsss10@gmail.com.",
     ] },
     { heading: "Qué incluye tu compra", body: [
-      "Al comprar un curso accedés a las clases grabadas y a los materiales de ese curso desde tu cuenta, sin límite de tiempo, mientras el curso permanezca disponible en la plataforma. [[PENDIENTE: confirmar con abogado la redacción de “acceso de por vida”]] El detalle de cada curso (temario, duración y materiales) figura en su página.",
+      "Al comprar un curso accedés a las clases grabadas y a los materiales de ese curso desde tu cuenta, sin límite de tiempo, mientras el curso permanezca disponible en la plataforma. El detalle de cada curso (temario, duración y materiales) figura en su página.",
     ] },
     { heading: "Tu cuenta", body: [
       "Para comprar y ver los cursos necesitás crear una cuenta con datos verdaderos. Sos responsable de mantener la confidencialidad de tu contraseña.",
@@ -29,13 +29,14 @@ export const terminos: LegalDoc = {
     ] },
     { heading: "Uso responsable de lo aprendido", body: [
       "Los cursos tienen fines educativos y técnicos. Aplicá las técnicas con los cuidados de higiene y seguridad que se explican en las clases, y consultá a un profesional de la salud ante alergias, lesiones o afecciones de la piel o de las uñas.",
-      "IA NAILS no garantiza resultados económicos o profesionales determinados. [[PENDIENTE: ¿se entrega certificado o diploma? Indicar condiciones o eliminar esta mención]]",
+      "IA NAILS no garantiza resultados económicos o profesionales determinados.",
+      "Al terminar un curso podés pedir tu certificado de participación en formato digital (PDF), por WhatsApp o por email. Es un certificado de IA NAILS: no es un título oficial.",
     ] },
     { heading: "Arrepentimiento y devoluciones", body: [
       "Podés ejercer tu derecho de arrepentimiento con el [Botón de arrepentimiento](/arrepentimiento). Las condiciones están explicadas en la [política de devoluciones](/devoluciones).",
     ] },
     { heading: "Atención al cliente", body: [
-      "Atendemos consultas por WhatsApp y por email, de lunes a viernes de 10 a 20 h y sábados de 9 a 14 h (domingos cerrado). Área responsable de la atención: [[PENDIENTE: nombre del área o persona]].",
+      `Atendemos consultas por WhatsApp y por email, de lunes a viernes de 10 a 20 h y sábados de 9 a 14 h (domingos cerrado). La atención está a cargo de la titular, ${TITULAR}.`,
     ] },
     { heading: "Suspensión del acceso", body: [
       "IA NAILS puede suspender el acceso a un curso ante un uso contrario a estos términos, como compartir la cuenta o redistribuir el contenido.",
@@ -44,7 +45,7 @@ export const terminos: LegalDoc = {
       "Podemos actualizar estos términos. Rige la versión publicada en el sitio y los cambios no afectan las compras ya realizadas.",
     ] },
     { heading: "Ley aplicable y reclamos", body: [
-      "Se aplica la ley argentina, incluida la Ley 24.240 de Defensa del Consumidor. Podés presentar reclamos ante la autoridad de aplicación de defensa del consumidor de tu jurisdicción. [[PENDIENTE: consultar si corresponde mostrar el enlace a la Dirección de Defensa del Consumidor]]",
+      "Se aplica la ley argentina, incluida la Ley 24.240 de Defensa del Consumidor. Podés presentar reclamos ante la autoridad de aplicación de defensa del consumidor de tu jurisdicción.",
     ] },
   ],
 };
@@ -63,14 +64,14 @@ export const privacidad: LegalDoc = {
     ] },
     { heading: "Para qué los usamos", body: [
       "Para crear y gestionar tu cuenta, procesar tus compras y darte acceso a los cursos, enviarte los mails vinculados a tu cuenta y a tus compras, atender tus consultas y solicitudes, y cumplir obligaciones legales.",
-      "No vendemos tus datos ni los usamos para publicidad de terceros. [[PENDIENTE: ¿se enviarán novedades o promociones? De ser así, pedir tu consentimiento por separado]]",
+      "No vendemos tus datos ni los usamos para publicidad de terceros. No te enviamos promociones ni novedades: solo los mails relacionados con tu cuenta y tus compras.",
     ] },
     { heading: "Con quién los compartimos", body: [
-      "Usamos proveedores para operar el sitio: Mercado Pago (pagos), Supabase (cuentas y base de datos), Vercel (alojamiento), Bunny (videos) y Resend (envío de mails). [[PENDIENTE: ajustar esta lista cuando estén contratados]]",
+      "Usamos proveedores para operar el sitio: Mercado Pago (pagos), Supabase (cuentas y base de datos), Vercel (alojamiento), Bunny (videos) y Resend (envío de mails).",
       "Estos proveedores pueden almacenar o procesar datos en servidores ubicados fuera de la Argentina. [[PENDIENTE: revisión legal sobre transferencias internacionales de datos]]",
     ] },
     { heading: "Cookies", body: [
-      "Usamos cookies técnicas necesarias para mantener tu sesión iniciada. No usamos cookies de publicidad. [[PENDIENTE: actualizar si se agrega analítica]]",
+      "Usamos cookies técnicas necesarias para mantener tu sesión iniciada. No usamos cookies de publicidad.",
     ] },
     { heading: "Cuánto tiempo los conservamos", body: [
       "Mientras tengas una cuenta y durante los plazos que exijan las obligaciones legales y contables.",
@@ -78,7 +79,6 @@ export const privacidad: LegalDoc = {
     { heading: "Tus derechos", body: [
       "Podés pedir el acceso, la rectificación o la supresión de tus datos escribiendo a ianailsss10@gmail.com.",
       "El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326. La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.",
-      "[[PENDIENTE: consultar si corresponde inscribir la base de datos en el Registro Nacional de Bases de Datos]]",
     ] },
     { heading: "Seguridad", body: [
       "Aplicamos medidas razonables para proteger tus datos: conexiones cifradas y acceso restringido a la información.",
