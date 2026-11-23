@@ -1,74 +1,66 @@
-# Guía para Iara
+# Guía para Iara 💅
 
-Esta guía es para vos, Iara. No hace falta saber de programación: acá está lo que necesitamos que nos pases para lanzar y cómo se usa la web en el día a día.
+Tranqui: **de la parte técnica se ocupa Luis.** Vos solo tenés que hacer lo de abajo.
 
-## 1. Lo que necesitamos de vos para lanzar
-Ordenado por prioridad: lo de arriba es lo que más frena. Se puede ir pasando de a poco.
+---
 
-### Paso 1: Lo urgente
-- [ ] Acceso de **Administrator** en Supabase para Luis: supabase.com → tu organización → Settings → Team → Invite → rol Administrator
-- [ ] Nombre completo o razón social, DNI o CUIT y condición fiscal (van en los términos, los pide la ley)
-- [ ] Confirmar el mail de contacto: ¿es `ianailsss10@gmail.com`, con tres "s"?
-- [ ] Confirmar que la marca se escriba **IA NAILS**
-- [ ] **Precios finales** y si incluyen impuestos. Hoy (provisorios): Soft Gel inicial $15.000 · Semipermanente, Nivelación y Capping gel $40.000 · Capping Polygel $25.000 · Nail Art inicial $8.000 · Nail Art nivel 2 $15.000
+## Antes de abrir la web: mandale esto a Luis
 
-### Paso 2: Decisiones
-- [ ] **Dominio** (ej.: `ianails.com.ar`). Se compra en nic.ar con clave fiscal de ARCA
-- [ ] **Certificado**: ¿se entrega? ¿PDF o impreso? ¿Con qué condición?
-- [ ] **Devoluciones** (con tu contador): plazo para devolver la plata y desde cuándo un curso cuenta como "usado"
-- [ ] ¿Se mandan promociones o novedades por mail?
-- [ ] Con tu contador: si hay que inscribir la base de datos y si va el enlace a Defensa del Consumidor
+Podés mandarlo de a poco, por WhatsApp.
 
-### Paso 3: Fotos (mandalas como *documento*, no como foto, para no perder calidad)
-- [ ] Portadas verticales de **Capping Polygel**, **Nail Art inicial** y **Nail Art nivel 2**
-- [ ] Foto tuya para "Sobre mí", vertical y con buena luz
-- [ ] Logo en buena calidad (original o PNG sin fondo)
+**1. Tus datos**
+- Nombre completo y DNI (o CUIT)
+- Si sos monotributista u otra cosa
+- Los precios finales de cada curso
 
-### Paso 4: Videos (de a un curso por vez, por Google Drive o WeTransfer)
-- [ ] Un archivo por clase, nombrado con su número (`1.mp4`, `2.mp4`…)
-- [ ] Una lista con número, título y minutos de cada clase (ver la sección 3)
+**2. Fotos** (mandalas como *documento*, no como foto, para que no pierdan calidad)
+- Portadas de: Capping Polygel, Nail Art inicial y Nail Art nivel 2
+- Una foto tuya linda para "Sobre mí"
+- Tu logo en buena calidad
 
-### Paso 5: Cuentas a tu nombre (Luis queda como colaborador)
-- [ ] **Mercado Pago**: ahí entra la plata. Se configura juntos en una llamada
-- [ ] **Supabase** (base de datos) y **Vercel** (hosting): planes pagos, en dólares por mes
-- [ ] **Bunny** (videos) y **Resend** (mails automáticos): se pagan según el uso o tienen plan gratis
+**3. Videos** (de a un curso por vez, por Google Drive)
+- Un video por clase
+- Una lista con el orden y el nombre de cada clase. Ejemplo:
+  1 - Bienvenida y materiales
+  2 - Preparación de la uña
 
-### Paso 6: Antes de lanzar
-- [ ] Leer los términos, la privacidad y las devoluciones publicados en la web
-- [ ] Probar la web desde tu celular: crear una cuenta y mirar los cursos
-- [ ] Una compra real de poca plata, que después se devuelve, para probar todo de punta a punta
+**4. Una llamada con Luis** (media hora)
+Para crear juntos tu cuenta de cobro y lo demás. Vos solo tenés que tener a mano tu celular y tu mail.
 
-## 2. Cómo funciona una venta
-1. La alumna crea su cuenta en la web y toca **Comprar curso**.
-2. Paga con Mercado Pago (tarjeta, débito, dinero en cuenta…).
-3. Apenas se aprueba el pago, la web **le habilita el curso sola** y le manda un mail. No tenés que hacer nada.
-4. La alumna entra a **Mis cursos** y mira las clases cuando quiera. La web le guarda el avance.
+**5. Unas preguntas para tu contador**
+- ¿Doy certificado?
+- Si alguien pide que le devuelva la plata, ¿en cuántos días se la devuelvo?
 
-**¿Dónde veo las ventas?** En tu cuenta de Mercado Pago, en Actividad, como cualquier cobro.
+---
 
-## 3. Cómo cargar un curso nuevo o sus clases
-1. Grabá y editá los videos (un archivo por clase).
-2. Pasale a Luis los archivos y una lista con **el orden, el título y la duración aproximada** de cada clase, así:
+## Cuando la web ya esté abierta
 
-| Clase | Título | Minutos |
-|---|---|---|
-| 1 | Bienvenida y materiales | 8 |
-| 2 | Preparación de la uña natural | 15 |
+### La web vende sola
+1. La alumna entra a la web y compra el curso.
+2. Paga con Mercado Pago.
+3. **La web le da el curso al instante y le manda un mail.** Vos no tenés que hacer nada.
 
-3. Luis los sube y en unos minutos aparecen en la web, solo para quienes compraron el curso.
+### ¿Cómo sé que vendí?
+Te llega la plata a tu **Mercado Pago**, como cualquier cobro. Ahí ves cada venta.
 
-Para un curso nuevo, sumá también el nombre, el precio, una descripción corta y la portada.
+### ¿Qué hago yo en el día a día?
+Solo responder a tus alumnas por WhatsApp o Instagram, como siempre. 😊
 
-## 4. Situaciones frecuentes
-| Qué pasa | Qué hacer |
+---
+
+## Si pasa algo → avisale a Luis
+
+| Si… | Hacés esto |
 |---|---|
-| Una alumna pagó y no ve el curso | Pedile el mail con el que se registró y avisale a Luis. Lo resuelve en minutos |
-| Querés regalar un curso o dar una beca | Pasale a Luis el mail de la persona y el curso |
-| Una alumna se arrepiente de la compra | La ley le da **10 días** para pedirlo con el botón de arrepentimiento que está al pie de la web. Te llega un mail con su pedido. Devolvés la plata desde Mercado Pago, en el detalle de esa venta, y **el acceso al curso se le quita solo** |
-| Querés cambiar un precio, un horario o tu WhatsApp | Avisale a Luis. Ojo: el precio se cambia en varios lugares a la vez para que la web no muestre uno y cobre otro |
-| Una alumna se olvidó la contraseña | Puede recuperarla sola con "¿Olvidaste tu contraseña?" en la pantalla de ingreso |
+| Una alumna pagó y no ve el curso | Pedile **el mail con el que se registró** y mandáselo a Luis |
+| Querés regalarle un curso a alguien | Mandale a Luis **el mail de esa persona y el curso** |
+| Querés cambiar un precio o un dato | Avisale a Luis |
+| Querés subir un curso nuevo | Mandale a Luis los videos, la lista de clases, el precio y una portada |
+| Una alumna se olvidó la contraseña | Que toque **"¿Olvidaste tu contraseña?"** en la web. Se arregla sola |
+| Te llega un mail de "arrepentimiento" | La alumna pidió que le devuelvas la plata (tiene 10 días para pedirlo). Avisale a Luis y lo hacen juntos desde Mercado Pago |
+| La web no anda | Sacale una captura y mandásela a Luis |
 
-## 5. Para tener en cuenta
-- **Las claves no se mandan por chat.** Si te pido acceso a algo, invitame como colaborador desde el panel de ese servicio.
-- Los videos están protegidos: los links vencen y no se pueden compartir ni descargar fácilmente. Igual, nadie puede impedir que alguien grabe la pantalla.
-- Si la web no anda, mandale a Luis una captura de lo que ves y en qué página estabas.
+---
+
+## Una sola regla de oro 🔒
+**Nunca le mandes a nadie tus contraseñas ni códigos por mensaje, ni siquiera a Luis.** Si él necesita entrar a algo, lo hacen juntos en una llamada.
