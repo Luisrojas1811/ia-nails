@@ -39,6 +39,7 @@ Sin claves de Supabase la web igual abre: las cuentas, los pagos y los mails res
 | `npm run typecheck` | Revisión de tipos |
 | `npm run build` | Compila para producción |
 | `npm run check:launch` | Lista los datos `[[PENDIENTE]]` que faltan en los textos legales |
+| `npm run clases -- archivo.csv` | Convierte una planilla de clases en el SQL para Supabase (ver `docs/VIDEOS_SETUP.md`) |
 
 ## Estructura
 ```
@@ -122,6 +123,7 @@ Se cargan en `.env.local` (computadora) y en Vercel → Settings → Environment
 | [`docs/PAYMENTS_SETUP.md`](docs/PAYMENTS_SETUP.md) | Configurar y probar Mercado Pago |
 | [`docs/VIDEOS_SETUP.md`](docs/VIDEOS_SETUP.md) | Configurar Bunny y cargar videos |
 | [`docs/EMAIL_SETUP.md`](docs/EMAIL_SETUP.md) | Configurar Resend y los mails |
+| [`docs/GUIA_IARA.md`](docs/GUIA_IARA.md) | Guía para Iara: qué hace ella y qué le pide a Luis |
 
 ## Límites conocidos
 - **No hay panel de administración:** los cursos, clases y videos se cargan con comandos SQL (están en `docs/`). Es parte de la etapa 2.

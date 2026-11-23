@@ -3,7 +3,7 @@
 Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tildar** en las secciones de pagos, legales y seguridad.
 
 ## 1. Contenido y marca
-- [ ] Nombre de la marca definido y escrito igual en todo el sitio (hoy conviven "IA NAILS", "Ia Nails" e "IaNails")
+- [x] Nombre de la marca escrito igual en todo el sitio: "IA NAILS" (confirmar con Iara que así le gusta)
 - [ ] Mail de contacto confirmado (`src/lib/site.ts`)
 - [ ] Portadas de los 5 cursos (faltan Capping Polygel, Nail Art inicial y Nail Art nivel 2)
 - [ ] Retrato de Iara para "Sobre mí" (hoy hay una selfie provisoria)
@@ -44,7 +44,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 ## 6. Videos
 - [ ] Web publicada **antes** de activar la autenticación por token en Bunny
 - [ ] Autenticación por token activada y dominio real en Allowed domains
-- [ ] Clases y videos de cada curso cargados
+- [ ] Clases y videos de cada curso cargados (con `npm run clases`, ver `docs/VIDEOS_SETUP.md`)
 - [ ] Reproducción comprobada con una cuenta que compró el curso
 - [ ] Clases de ejemplo borradas (`demo-lessons.sql`)
 
@@ -55,7 +55,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] Usuarios, compras y solicitudes de prueba eliminados (en este orden: `payments`, `enrollments`, `orders`)
 - [x] Freno contra el spam en el botón de arrepentimiento (3 por mail por día, 20 por hora). Un captcha es opcional
 - [ ] Aplicada en Supabase la migración `20261011000000_arrepentimiento_indices.sql`
-- [ ] Revisión de accesibilidad y contraste (**pendiente**)
+- [x] Revisión de accesibilidad y contraste: axe (WCAG 2.2 AA) sin errores en todas las páginas públicas, en computadora y celular, y sin desplazamiento lateral a 320 px. Repetir si cambia el diseño
 - [ ] Probado todo desde un celular real
 
 ## 8. Buscadores y seguridad de la web

@@ -15,7 +15,7 @@ Si no están configuradas las variables de abajo, **la web funciona igual** pero
 
 ## 2. Variables (Vercel → Production, y `.env.local` si se prueba local) + Redeploy
 - `RESEND_API_KEY`: la clave del paso 4.
-- `EMAIL_FROM`: `IA Nails <hola@tudominio.com.ar>` (tiene que ser del dominio verificado).
+- `EMAIL_FROM`: `IA NAILS <hola@tudominio.com.ar>` (tiene que ser del dominio verificado).
 - `NOTIFY_EMAIL`: el mail de Iara que recibe los avisos internos.
 
 ## 3. Mails de cuenta de Supabase (confirmar cuenta y recuperar contraseña)
@@ -25,7 +25,7 @@ Son otros mails: los manda Supabase, no la web. Para que salgan con el dominio p
 - Puerto: `465` (o `587`)
 - Usuario: `resend`
 - Contraseña: la misma API key de Resend
-- Remitente: `hola@tudominio.com.ar` y el nombre "IA Nails"
+- Remitente: `hola@tudominio.com.ar` y el nombre "IA NAILS"
 
 ## 4. Cómo probar
 1. **Arrepentimiento:** enviar el formulario de `/arrepentimiento` con un mail propio. Tienen que llegar dos mails: uno a la persona (con el código) y otro a `NOTIFY_EMAIL`. Después borrar la fila de prueba en `withdrawal_requests`.
