@@ -66,10 +66,10 @@ export default function Home() {
           <Reveal delay={100} className="space-y-5 lg:col-span-7">
             <h2 className={h2}>La manicuría tratada como una <span className="italic text-violet">disciplina escultórica</span></h2>
             <div className="max-w-xl space-y-4 text-lg leading-relaxed text-ink-muted">
-              <p>Soy Iara, nail artist y creadora de Ianails. Mi camino empezó en 2022, cuando todavía estaba en el secundario y tenía unas ganas enormes de tener mis propios ingresos.</p>
+              <p>Soy Iara, nail artist y creadora de IA NAILS. Mi camino empezó en 2022, cuando todavía estaba en el secundario y tenía unas ganas enormes de tener mis propios ingresos.</p>
               <p>El arte siempre fue lo mío, y las uñas fueron ese lugar donde todo encajó.</p>
               <p>Hoy me dedico de lleno a este oficio y a compartir lo que aprendí a través de cursos iniciales para personas que, como yo, quieren construir algo propio. Con más de 4 años de experiencia, no solo te enseño técnica: te acompaño desde donde estás, guiándote paso a paso en todo lo que necesites.</p>
-              <p>Así que si estás lista para empezar… bienvenida a Ianails ✨</p>
+              <p>Así que si estás lista para empezar… bienvenida a IA NAILS ✨</p>
             </div>
           </Reveal>
         </div>

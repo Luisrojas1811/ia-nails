@@ -4,7 +4,7 @@ Panel: mercadopago.com.ar/developers → **Tus integraciones**. Dentro de cada a
 Credenciales, Pruebas (Cuentas de prueba y Tarjetas de prueba) y Webhooks.
 
 ## 1. Crear la aplicación (Iara, con su cuenta verificada)
-1. **Tus integraciones → Crear aplicación.** Nombre: "IA Nails web". Producto: **Checkout Pro**.
+1. **Tus integraciones → Crear aplicación.** Nombre: "IA NAILS web". Producto: **Checkout Pro**.
 2. Las aplicaciones nuevas de Checkout Pro reciben **credenciales de prueba automáticas** (Access Token y Public Key de prueba).
 3. Las credenciales **de producción** las maneja solo Iara y nunca se mandan por chat. Las de prueba se pueden copiar directo a Vercel durante la llamada.
 

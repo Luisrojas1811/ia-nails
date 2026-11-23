@@ -59,7 +59,7 @@ export default async function CoursePage({ params }: Props) {
               </ul>
             </div>
           </div>
-          <aside className="lg:col-span-5">
+          <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-2xl bg-surface-lowest shadow-xl">
               {course.cover ? (
                 <div className="relative aspect-[4/5]">
@@ -86,7 +86,7 @@ export default async function CoursePage({ params }: Props) {
                 </a>
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
