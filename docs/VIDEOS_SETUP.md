@@ -4,7 +4,7 @@
 1. Crear la cuenta de Bunny **a nombre de Iara** (con Luis invitado como miembro del equipo) y una **Video Library** llamada `ia-nails`.
 2. En la library → **Security**: activar **Embed view token authentication** y copiar esa clave (no es la API key).
    Con esto, un link de video sin firma da error 403: solo la web puede generar links válidos.
-3. En **Security → Allowed domains**: agregar el dominio de la web (y `ia-nails-lpwe.vercel.app` mientras tanto).
+3. En **Security → Allowed domains**: agregar el dominio de la web (y `ia-nails.vercel.app` mientras tanto).
 4. Variables en `.env.local` y en Vercel (y redeploy):
    `BUNNY_STREAM_LIBRARY_ID` (número de la library) y `BUNNY_STREAM_TOKEN_AUTH_KEY` (la clave del paso 2).
 

@@ -2,7 +2,7 @@
 
 Sitio web de **Iara (IA NAILS)** para vender y entregar cursos online de uñas: catálogo, cuentas de alumnas, pago con Mercado Pago, acceso automático al curso, clases con video y botón de arrepentimiento.
 
-- **Sitio de pruebas:** https://ia-nails-lpwe.vercel.app (con bloqueo de buscadores hasta el lanzamiento)
+- **Sitio de pruebas:** https://ia-nails.vercel.app (con bloqueo de buscadores hasta el lanzamiento)
 - **Repositorio:** github.com/Luisrojas1811/ia-nails
 
 ## Stack
