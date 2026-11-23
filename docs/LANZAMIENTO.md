@@ -23,7 +23,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] **Supabase en plan pago** (los proyectos gratuitos se pausan solos y no tienen copias automáticas)
 - [ ] **Vercel en plan Pro** (el plan gratuito no permite uso comercial)
 - [ ] Dominio registrado a nombre de Iara y apuntando a Vercel
-- [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara, con Luis como colaborador donde se pueda
+- [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara (todo lo paga ella desde el principio), con Luis como colaborador donde se pueda
 
 ## 4. Pagos (Mercado Pago)
 - [ ] Credenciales **de producción** cargadas en Vercel (Production)

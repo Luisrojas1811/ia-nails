@@ -1,7 +1,7 @@
 # Videos con Bunny Stream
 
 ## Una sola vez
-1. Crear la cuenta de Bunny (al principio la paga Luis; después se puede pasar a la de Iara) y una **Video Library** llamada `ia-nails`.
+1. Crear la cuenta de Bunny **a nombre de Iara** (con Luis invitado como miembro del equipo) y una **Video Library** llamada `ia-nails`.
 2. En la library → **Security**: activar **Embed view token authentication** y copiar esa clave (no es la API key).
    Con esto, un link de video sin firma da error 403: solo la web puede generar links válidos.
 3. En **Security → Allowed domains**: agregar el dominio de la web (y `ia-nails-lpwe.vercel.app` mientras tanto).
