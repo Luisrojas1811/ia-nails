@@ -11,7 +11,6 @@ Podés mandarlo de a poco, por WhatsApp.
 **1. Tus datos**
 - Nombre completo y DNI (o CUIT)
 - Si sos monotributista u otra cosa
-- Los precios finales de cada curso
 
 **2. Fotos** (mandalas como *documento*, no como foto, para que no pierdan calidad)
 - Portadas de: Capping Polygel, Nail Art inicial y Nail Art nivel 2

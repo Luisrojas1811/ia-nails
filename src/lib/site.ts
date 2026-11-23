@@ -1,4 +1,4 @@
-// Datos confirmados por Iara. Verificar el mail antes de publicar (¿"ianailsss10" con tres "s"?).
+// Datos confirmados por Iara (el mail con tres "s" es correcto).
 export const site = {
   name: "IA NAILS",
   tagline: "Nail Artist · Técnica educadora",

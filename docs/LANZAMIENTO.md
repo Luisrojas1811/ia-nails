@@ -4,7 +4,8 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 
 ## 1. Contenido y marca
 - [x] Nombre de la marca escrito igual en todo el sitio: "IA NAILS" (confirmar con Iara que así le gusta)
-- [ ] Mail de contacto confirmado (`src/lib/site.ts`)
+- [x] Mail de contacto confirmado (`src/lib/site.ts`)
+- [x] Precios de los 5 cursos confirmados (falta saber si incluyen impuestos)
 - [ ] Portadas de los 5 cursos (faltan Capping Polygel, Nail Art inicial y Nail Art nivel 2)
 - [ ] Retrato de Iara para "Sobre mí" (hoy hay una selfie provisoria)
 - [ ] Logo vectorial o PNG transparente de origen (el actual se limpió desde una imagen con fondo dibujado)
@@ -23,7 +24,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] **Supabase en plan pago** (los proyectos gratuitos se pausan solos y no tienen copias automáticas)
 - [ ] **Vercel en plan Pro** (el plan gratuito no permite uso comercial)
 - [ ] Dominio registrado a nombre de Iara y apuntando a Vercel
-- [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara, con Luis como colaborador donde se pueda
+- [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara (todo lo paga ella desde el principio), con Luis como colaborador donde se pueda
 
 ## 4. Pagos (Mercado Pago)
 - [ ] Credenciales **de producción** cargadas en Vercel (Production)
