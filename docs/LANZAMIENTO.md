@@ -13,6 +13,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] `npm run check:launch` termina sin datos pendientes
 
 ## 2. Legal
+- [ ] **Definido quién vende y factura los cursos:** Iara no tiene monotributo. Consultar con un contador si se inscribe ella antes de lanzar (lo recomendado) o qué alternativa hay
 - [ ] Datos del titular cargados: nombre o razón social, DNI o CUIT, condición fiscal
 - [ ] Un abogado o contador revisó términos, privacidad y devoluciones
 - [x] Decidido cuándo se considera "usado" un curso: al abrir la primera clase con video. Reintegro en 7 días corridos
@@ -22,8 +23,9 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 
 ## 3. Cuentas de servicios (a nombre de Iara)
 - [ ] **Supabase en plan pago** (los proyectos gratuitos se pausan solos y no tienen copias automáticas)
-- [ ] **Vercel en plan Pro** (el plan gratuito no permite uso comercial)
-- [ ] Dominio `ianails10.com.ar` registrado a nombre de Iara y apuntando a Vercel
+- [ ] **Vercel en plan Pro a nombre de Iara** (el plan gratuito no permite uso comercial): Iara crea su cuenta Pro, invita a Luis y Luis le transfiere el proyecto (Settings → General → Transfer Project)
+- [ ] **Claves nuevas** en Mercado Pago, Bunny y Resend (las de la videollamada pasaron por el chat): generar nuevas, cargarlas en Vercel y borrar las viejas
+- [ ] Dominio `ianails10.com.ar` registrado (por ahora a nombre de Luis, que es monotributista; pasarlo a Iara en nic.ar cuando se inscriba) y apuntando a Vercel
 - [ ] Cuentas de Mercado Pago, Resend y Bunny a nombre de Iara (todo lo paga ella desde el principio), con Luis como colaborador donde se pueda
 
 ## 4. Pagos (Mercado Pago)
