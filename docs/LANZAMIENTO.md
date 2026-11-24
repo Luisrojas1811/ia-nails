@@ -15,7 +15,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 ## 2. Legal
 - [ ] Datos del titular cargados: nombre o razón social, DNI o CUIT, condición fiscal
 - [ ] Un abogado o contador revisó términos, privacidad y devoluciones
-- [ ] Decidido cuándo se considera "usado" un curso (reembolsos)
+- [x] Decidido cuándo se considera "usado" un curso: al abrir la primera clase con video. Reintegro en 7 días corridos
 - [x] Consultado: no hace falta inscribir la base de datos ni mostrar el enlace de Defensa del Consumidor
 - [ ] Botón de arrepentimiento en un lugar visible desde el primer acceso (hoy está en el pie de página: confirmar que alcanza)
 - [x] Certificado: PDF al terminar el curso, a pedido por WhatsApp o mail
@@ -55,7 +55,7 @@ Marcar cada punto recién cuando se comprobó. **No se lanza con puntos sin tild
 - [ ] Ninguna clave se subió a GitHub ni se compartió por chat (si pasó, rotarla)
 - [ ] Usuarios, compras y solicitudes de prueba eliminados (en este orden: `payments`, `enrollments`, `orders`)
 - [x] Freno contra el spam en el botón de arrepentimiento (3 por mail por día, 20 por hora). Un captcha es opcional
-- [ ] Aplicada en Supabase la migración `20261011000000_arrepentimiento_indices.sql`
+- [ ] Aplicadas en Supabase las migraciones `20261011000000_arrepentimiento_indices.sql` y `20261124000000_primera_clase_abierta.sql` (en ese orden)
 - [x] Revisión de accesibilidad y contraste: axe (WCAG 2.2 AA) sin errores en todas las páginas públicas, en computadora y celular, y sin desplazamiento lateral a 320 px. Repetir si cambia el diseño
 - [ ] Probado todo desde un celular real
 

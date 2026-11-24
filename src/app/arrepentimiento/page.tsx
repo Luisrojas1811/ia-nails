@@ -10,7 +10,7 @@ export default function ArrepentimientoPage() {
       <div className="mx-auto max-w-3xl rounded-2xl bg-surface-lowest p-8 shadow-xl lg:p-12">
         <h1 className="font-serif text-3xl font-bold tracking-tight lg:text-4xl">Solicitud de arrepentimiento</h1>
         <p className="mt-3 max-w-2xl leading-relaxed text-ink-muted">
-          Tenés 10 días corridos desde la compra para arrepentirte. No necesitás tener una cuenta ni explicar el motivo.
+          Tenés 10 días corridos desde la compra para arrepentirte, mientras no hayas abierto ninguna clase del curso. No necesitás tener una cuenta ni explicar el motivo.
           Usamos estos datos solo para gestionar tu solicitud (<Link href="/privacidad" className="font-semibold text-violet">política de privacidad</Link>).
         </p>
         <div className="mt-10"><WithdrawalForm /></div>

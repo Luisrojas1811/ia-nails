@@ -20,7 +20,7 @@ export const terminos: LegalDoc = {
       "La cuenta y el acceso a los cursos son personales e intransferibles: no se pueden compartir ni revender.",
     ] },
     { heading: "Precios y pago", body: [
-      "Los precios se expresan en pesos argentinos [[PENDIENTE: confirmar si incluyen impuestos]]. El pago se procesa a través de Mercado Pago, con los medios de pago que esa plataforma habilite. IA NAILS no almacena los datos de tu tarjeta.",
+      "Los precios se expresan en pesos argentinos y son finales: incluyen impuestos. El pago se procesa a través de Mercado Pago, con los medios de pago que esa plataforma habilite. IA NAILS no almacena los datos de tu tarjeta.",
       "El acceso se habilita automáticamente cuando Mercado Pago confirma el pago. En pagos en efectivo o pendientes puede demorar hasta que se acrediten.",
     ] },
     { heading: "Propiedad intelectual", body: [
@@ -100,11 +100,11 @@ export const devoluciones: LegalDoc = {
     { heading: "Cómo funciona", body: [
       "1. Completás el formulario del botón de arrepentimiento.",
       "2. Recibís un código de identificación de tu solicitud, en pantalla y dentro de las 24 horas por email.",
-      "3. Te devolvemos el importe por el mismo medio de pago que usaste, en [[PENDIENTE: plazo de reintegro]], y se desactiva el acceso al curso.",
+      "3. Te devolvemos el importe por el mismo medio de pago que usaste, en un plazo máximo de 7 días corridos, y se desactiva el acceso al curso.",
     ] },
     { heading: "Cuándo no aplica", body: [
       "El derecho de arrepentimiento no aplica en los casos que prevé la normativa, por ejemplo cuando el servicio ya fue utilizado o consumido.",
-      "[[PENDIENTE: decisión con abogado o contador: cuándo se considera \"utilizado\" un curso online (¿al ver la primera clase? ¿al superar cierto porcentaje?) y si se ofrece reintegro total o parcial]]",
+      "Un curso se considera utilizado cuando abrís su primera clase con video. Si todavía no abriste ninguna clase, podés arrepentirte dentro de los 10 días corridos y te devolvemos el importe total. Esto te lo informamos antes de comprar, junto al botón de compra.",
     ] },
     { heading: "Problemas con tu compra", body: [
       "Si pagaste y no ves tu curso, si se te cobró dos veces o si tenés cualquier otro inconveniente, escribinos por WhatsApp al +54 9 11 2643-5229 o a ianailsss10@gmail.com y lo resolvemos.",

@@ -66,6 +66,17 @@ select created_at, code, full_name, email, course_slugs, reference, status
 from public.withdrawal_requests
 order by created_at desc;
 ```
+Para saber si corresponde (opción elegida: el curso cuenta como **usado al abrir la primera clase**), buscar la compra por el mail de la solicitud:
+```sql
+select c.slug, e.granted_at as comprado, e.first_lesson_opened_at as primera_clase_abierta,
+       now() - e.granted_at < interval '10 days' as dentro_de_10_dias
+from public.enrollments e
+join auth.users u on u.id = e.user_id
+join public.courses c on c.id = e.course_id
+where u.email = 'mail@dealumna.com';
+```
+Corresponde el reintegro si `dentro_de_10_dias` es `true` (contando desde la fecha de la solicitud) **y** `primera_clase_abierta` está vacío. El plazo para devolver la plata es de **7 días corridos**.
+
 Para reintegrar: hacerlo desde el panel de Mercado Pago. Cuando el pago figura como reembolsado, la web desactiva el acceso al curso sola.
 
 ### Cambiar datos que no están en la base

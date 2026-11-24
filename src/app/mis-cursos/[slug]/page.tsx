@@ -7,6 +7,7 @@ import { bunnyEmbedFor } from "@/lib/bunny";
 import { courseProgress, formatDuration, isEnrollmentActive, pickLesson, type Lesson } from "@/lib/learning";
 import { LessonPlayer } from "@/components/LessonPlayer";
 import { ProgressBar } from "@/components/ProgressBar";
+import { OpenedTracker } from "@/components/OpenedTracker";
 import { toggleComplete } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -60,6 +61,7 @@ export default async function LearnPage({ params, searchParams }: Props) {
           <div className="mt-8 grid gap-8 lg:grid-cols-12">
             <div className="space-y-5 lg:col-span-8">
               <LessonPlayer embedUrl={embedUrl} title={current.title} />
+              {embedUrl && <OpenedTracker courseId={course.id} />}
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <h2 className="font-serif text-2xl font-bold tracking-tight">{current.position}. {current.title}</h2>
                 <form action={toggleComplete}>
