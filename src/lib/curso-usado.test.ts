@@ -32,6 +32,8 @@ describe("curso usado al abrir la primera clase", () => {
 
   it("la base solo deja escribir la fecha una vez y solo en la inscripción propia", () => {
     const sql = read("supabase/migrations/20261124000000_primera_clase_abierta.sql");
+    expect(sql).toContain("add column if not exists");
+    expect(sql).toContain("create or replace function");
     expect(sql).toContain("security definer set search_path = ''");
     expect(sql).toContain("user_id = (select auth.uid())");
     expect(sql).toContain("first_lesson_opened_at is null");
