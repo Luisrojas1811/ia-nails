@@ -20,3 +20,13 @@ export async function toggleComplete(fd: FormData): Promise<void> {
   revalidatePath(`/mis-cursos/${slug}`);
   revalidatePath("/mis-cursos");
 }
+
+// Registra la primera vez que la alumna abre una clase con video (define si el curso ya fue "usado"
+// para el arrepentimiento). La función de la base solo escribe la fecha una vez y solo en la inscripción propia.
+export async function markCourseOpened(courseId: string): Promise<void> {
+  if (!UUID.test(courseId)) return;
+  const [user, db] = await Promise.all([getUser(), createClient()]);
+  if (!user || !db) return;
+  const { error } = await db.rpc("mark_course_opened", { p_course_id: courseId });
+  if (error) console.warn("[cursos] no se pudo registrar la primera clase abierta:", error.message);
+}

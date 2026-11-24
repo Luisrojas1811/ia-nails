@@ -69,7 +69,10 @@ export default async function CoursePage({ params }: Props) {
                 <Placeholder label="Portada pendiente" className="aspect-[4/5]" />
               )}
               <div className="space-y-5 p-7">
-                <p className="font-serif text-3xl font-bold">{formatPrice(course.price)}</p>
+                <div>
+                  <p className="font-serif text-3xl font-bold">{formatPrice(course.price)}</p>
+                  <p className="mt-1 text-sm text-ink-muted">Precio final, impuestos incluidos.</p>
+                </div>
                 {checkoutEnabled ? (
                   <BuyButton slug={course.slug} />
                 ) : (
@@ -80,6 +83,10 @@ export default async function CoursePage({ params }: Props) {
                     <p className="text-sm text-ink-muted">El pago online con Mercado Pago estará disponible pronto.</p>
                   </>
                 )}
+                <p className="text-sm leading-relaxed text-ink-muted">
+                  Tenés 10 días corridos para arrepentirte de la compra mientras no hayas abierto ninguna clase.
+                  Al abrir la primera clase, el curso se considera utilizado (<Link href="/devoluciones" className="font-semibold text-violet">política de devoluciones</Link>).
+                </p>
                 <a href={whatsappLink(`Hola! Quiero consultar por el curso "${course.name}".`)} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold hover:text-violet">
                   <MessageCircle size={18} aria-hidden /> Consultar por este curso
